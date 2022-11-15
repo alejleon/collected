@@ -23,10 +23,16 @@ export default {
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF"
-      }
+      },
+      package: 'com.collectedapp.www'
     },
     web: {
       favicon: "./assets/favicon.png"
+    },
+    extra: {
+      eas: {
+        projectId: "6259e058-8794-4c8f-bf6d-b32f27d652bf"
+      }
     }
   }
 }

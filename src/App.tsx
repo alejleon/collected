@@ -1,10 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+// import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>AYEEEE what the hell is happening here????</Text>
+      <View
+        style={{
+          marginHorizontal: 16,
+          borderColor: 'red',
+          borderWidth: 2,
+          alignItems: 'center',
+        }}
+      >
+        <Text>AYEEEE what the hell is happening here????</Text>
+        {/* <Button
+          title={'isPalindrome????'}
+          onPress={() => {
+            const result = isPalindrome(12321);
+            console.log('RESULTTTT', result, '\n');
+          }}
+        /> */}
+      </View>
       {/* <StatusBar style="auto" /> */}
     </View>
   );
@@ -13,8 +30,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'maroon',
+    backgroundColor: 'lavender',
     // alignItems: "center",
-    // justifyContent: "center",
+    justifyContent: 'center',
   },
 });
