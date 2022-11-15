@@ -1,25 +1,16 @@
-const isPalindrome = function(x) {
-  // if (x < 0) {
-  //     return false;
-  // }
-
-  const stringInt = x.toString();
-  const lastIndex = x.length - 1;
-
+const isPalindrome = function (x: number) {
+  const stringInt: string = x.toString();
+  const lastIndex = stringInt.length - 1;
 
   for (let i = 0; i < stringInt.length / 2; i++) {
-      const startingFrontInt = stringInt[i];
-      const startingBackInt = stringInt[lastIndex - i]
+    const startingFrontInt = stringInt[i];
+    const startingBackInt = stringInt[lastIndex - i];
 
-      if (startingFrontInt !== startingBackInt) {
-          return false;
-          console.log('returns false')
-      }
+    if (startingFrontInt !== startingBackInt) {
+      return false;
+    }
   }
-  console.log('returns true')
   return true;
-
 };
 
 export default isPalindrome;
-

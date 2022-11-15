@@ -1,6 +1,6 @@
 import React from 'react';
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
   return (
@@ -14,6 +14,13 @@ export default function App() {
         }}
       >
         <Text>AYEEEE what the hell is happening here????</Text>
+        {/* <Button
+          title={'isPalindrome????'}
+          onPress={() => {
+            const result = isPalindrome(12321);
+            console.log('RESULTTTT', result, '\n');
+          }}
+        /> */}
       </View>
       {/* <StatusBar style="auto" /> */}
     </View>
