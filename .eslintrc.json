@@ -1,55 +1,54 @@
 {
-    "env": {
-        "react-native/react-native": true,
-        "es2021": true,
-        "node": true,
-        "jest": true
+  "env": {
+    "react-native/react-native": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "overrides": [
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier"
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-native",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "@typescript-eslint/no-unused-vars": "error",
+    "linebreak-style": "off",
+    "semi": [
+      "error",
+      "always"
     ],
-    "overrides": [
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.json",
-        "ecmaVersion": "latest",
-        "ecmaFeatures": {
-          "jsx": true
-        },
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-native",
-        "react-hooks",
-        "@typescript-eslint",
-        "prettier"
-    ],
-    "rules": {
-        "indent": ["error", 2, { "SwitchCase": 1 }],
-        "quotes": ["error", "single", { "avoidEscape": true }],
-        "@typescript-eslint/no-unused-vars": "error",
-        "linebreak-style": "off",
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-empty-function": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "react/display-name": "off",
-        "react/prop-types": "off",
-        "prettier/prettier": "error"
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  }
 }
