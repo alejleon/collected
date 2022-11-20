@@ -1,10 +1,12 @@
 import React from 'react';
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import LoadingScreen from './features/loadingScreen/LoadingScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <LoadingScreen />
       <View
         style={{
           marginHorizontal: 16,
@@ -14,11 +16,12 @@ export default function App() {
         }}
       >
         <Text>AYEEEE what the hell is happening here????</Text>
+
         {/* <Button
           title={'isPalindrome????'}
           onPress={() => {
             const result = isPalindrome(12321);
-            console.log('RESULTTTT', result, '\n');
+             console.log('RESULTTTT', result, '\n');
           }}
         /> */}
       </View>
