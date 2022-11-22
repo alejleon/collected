@@ -8,7 +8,7 @@ export default {
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
-    backgroundColor: '#877473',
+    backgroundColor: '#000000',
     primaryColor: '#fcba03',
     androidStatusBar: {
       barStyle: 'light-content',
@@ -16,7 +16,7 @@ export default {
     },
     androidNavigationBar: {
       barStyle: 'light-content',
-      backgroundColor: '#877473',
+      backgroundColor: '#000000',
     },
     scheme: 'collected',
     splash: {
@@ -34,9 +34,12 @@ export default {
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#000000',
       },
       package: 'com.collectedapp.www',
+      splash: {
+        backgroundColor: '#000000',
+      },
     },
     web: {
       favicon: './assets/favicon.png',
