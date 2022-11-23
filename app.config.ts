@@ -6,9 +6,9 @@ export default {
     sdkVersion: '47.0.0',
     jsEngine: 'hermes',
     orientation: 'portrait',
-    icon: './assets/icon.png',
+    icon: './assets/collectedLogoXL.png',
     userInterfaceStyle: 'light',
-    backgroundColor: '#000000',
+    backgroundColor: '#FF0000',
     primaryColor: '#fcba03',
     androidStatusBar: {
       barStyle: 'light-content',
@@ -22,7 +22,7 @@ export default {
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#FF0000',
     },
     updates: {
       fallbackToCacheTimeout: 0,
@@ -33,12 +33,12 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#000000',
+        foregroundImage: './assets/adaptiveLogoSM.png',
+        backgroundColor: '#F5F5F5',
       },
       package: 'com.collectedapp.www',
       splash: {
-        backgroundColor: '#000000',
+        backgroundColor: '##FFA500',
       },
     },
     web: {
