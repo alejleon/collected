@@ -33,6 +33,9 @@ export default function App() {
   );
 }
 
+// '#fcba03' // yellow
+// #C72104 // red/orange
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
