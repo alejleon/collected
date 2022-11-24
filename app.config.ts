@@ -8,7 +8,7 @@ export default {
     orientation: 'portrait',
     icon: './assets/squareLogo2.png',
     userInterfaceStyle: 'light',
-    backgroundColor: '#FF8800',
+    backgroundColor: '#F5F5F5',
     primaryColor: '#fcba03',
     androidStatusBar: {
       barStyle: 'light-content',
@@ -20,7 +20,7 @@ export default {
     },
     scheme: 'collected',
     splash: {
-      backgroundColor: '#FF0000',
+      backgroundColor: '#F5F5F5',
     },
     updates: {
       fallbackToCacheTimeout: 0,
