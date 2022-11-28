@@ -1,38 +1,48 @@
-
 export default {
-  "expo": {
-    name: "collected",
-    slug: "collected",
-    version: "1.0.0",
-    orientation: "portrait",
-    icon: "./assets/icon.png",
-    userInterfaceStyle: "light",
+  expo: {
+    name: 'collected',
+    slug: 'collected',
+    version: '1.0.0',
+    sdkVersion: '47.0.0',
+    jsEngine: 'hermes',
+    orientation: 'portrait',
+    icon: './assets/squareLogo2.png',
+    userInterfaceStyle: 'light',
+    backgroundColor: '#F5F5F5',
+    primaryColor: '#fcba03',
+    androidStatusBar: {
+      barStyle: 'light-content',
+      translucent: false,
+    },
+    androidNavigationBar: {
+      barStyle: 'light-content',
+      backgroundColor: '#000000',
+    },
+    scheme: 'collected',
     splash: {
-      image: "./assets/splash.png",
-      resizeMode: "contain",
-      backgroundColor: "#ffffff"
+      backgroundColor: '#F5F5F5',
     },
     updates: {
-      fallbackToCacheTimeout: 0
+      fallbackToCacheTimeout: 0,
     },
-    assetBundlePatterns: ["**/*"],
+    assetBundlePatterns: ['**/*'],
     ios: {
-      supportsTablet: false
+      supportsTablet: false,
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
-        backgroundColor: "#FFFFFF"
+        foregroundImage: './assets/encircledLogo.png',
+        backgroundColor: '#F5F5F5',
       },
-      package: 'com.collectedapp.www'
+      package: 'com.collectedapp.www',
     },
     web: {
-      favicon: "./assets/favicon.png"
+      favicon: './assets/favicon.png',
     },
     extra: {
       eas: {
-        projectId: "6259e058-8794-4c8f-bf6d-b32f27d652bf"
-      }
-    }
-  }
-}
+        projectId: '6259e058-8794-4c8f-bf6d-b32f27d652bf',
+      },
+    },
+  },
+};
