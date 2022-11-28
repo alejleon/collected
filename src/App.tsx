@@ -35,6 +35,7 @@ export default function App() {
 
 // '#fcba03' // yellow
 // #C72104 // red/orange
+// #42a4f5  // electric blue
 
 const styles = StyleSheet.create({
   container: {
