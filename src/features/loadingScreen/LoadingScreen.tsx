@@ -17,13 +17,13 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     loadAppDataAsync();
-  }, [fontsLoaded])
+  }, [fontsLoaded]);
 
-  const loadAppDataAsync =; () => {
+  const loadAppDataAsync = () => {
     console.log('async fonts func');
     if (fontsLoaded) {
       console.log('fonts loaded');
-      SplashScreen.hideAsync();
+      // SplashScreen.hideAsync();
     }
   };
 
