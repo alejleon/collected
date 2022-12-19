@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from 'expo-splash-screen';
 import {
   useFonts,
   Inter_900Black,
@@ -14,27 +14,28 @@ const LoadingScreen = () => {
     PressStart2P_400Regular,
     RubikMonoOne_400Regular,
   });
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  SplashScreen.preventAutoHideAsync();
+
+  const nothingHere = false;
+  // will probably load asyncstorage Data from here // TODO
 
   useEffect(() => {
-    loadAppDataAsync();
-  }, [fontsLoaded]);
-
-  const loadAppDataAsync = () => {
-    console.log('async fonts func');
     if (fontsLoaded) {
       console.log('fonts loaded');
-      // SplashScreen.hideAsync();
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      SplashScreen.hideAsync();
     }
-  };
+  }, [fontsLoaded]);
 
-  // if (!appIsReady) {
-  //   return null;
-  // }
+  if (!fontsLoaded) {
+    return (
+      <View>
+        <Text>Loading screen is active</Text>
+      </View>
+    );
+  }
 
-  // return (
-  //   <View onLayout={onLayoutRootView}>
-  //     <Text>Loading Screen</Text>
-  //   </View>
-  // );
+  return null;
 };
 export default LoadingScreen;

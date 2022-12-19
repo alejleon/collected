@@ -2,8 +2,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, DevSettings } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SplashScreen from 'expo-splash-screen';
 import LoadingScreen from './features/loadingScreen/LoadingScreen';
+import AppHeader from './components/AppHeader';
 
 export default function App() {
   const nothing = '';
@@ -17,8 +17,9 @@ export default function App() {
         // backgroundColor="#29292988"
       />
       <LoadingScreen />
+      <AppHeader />
 
-      <View
+      {/* <View
         style={{
           // flex: 1,
           // marginHorizontal: 16,
@@ -28,11 +29,19 @@ export default function App() {
           backgroundColor: '#FFFFFF88',
         }}
       >
-        <Text style={{ marginBottom: 100 }}>
-          AYEEEE what the hell is happening here????
+        <Text
+          style={{
+            marginBottom: 100,
+            marginHorizontal: 16,
+            fontFamily: 'PressStart2P_400Regular',
+            fontSize: 30,
+            alignSelf: 'flex-end',
+          }}
+        >
+          Collected
         </Text>
         <Button title={'reload stuff'} onPress={() => DevSettings.reload()} />
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }
