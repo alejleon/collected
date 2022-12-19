@@ -6,8 +6,6 @@ import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './components/AppHeader';
 
 export default function App() {
-  const nothing = '';
-
   return (
     <SafeAreaView style={[styles.container]}>
       <StatusBar
@@ -45,10 +43,6 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-// '#fcba03' // yellow
-// #C72104 // red/orange
-// #42a4f5  // electric blue
 
 const styles = StyleSheet.create({
   container: {
