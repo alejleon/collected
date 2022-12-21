@@ -1,14 +1,12 @@
-import { TYPOGRAPHY } from './typography';
-import { SPACING } from './spacing';
-import { COLORS } from './colors';
+import TYPOGRAPHY from './typography';
+import SPACING from './spacing';
+import COLORS from './colors';
 
 export const GLOBAL_STYLES = {
   TYPOGRAPHY,
   SPACING,
   COLORS,
 };
-
-// export default GLOBAL_STYLES;
 
 export const theme = {
   colors: {
@@ -27,7 +25,7 @@ export const theme = {
   },
   textVariants: {
     header: {
-      fontFamily: 'PressStart2P_400Regular',
+      fontFamily: TYPOGRAPHY.PRESSSTART_400,
       fontSize: 24,
       lineHeight: 24,
       letterSpacing: 0.15,
@@ -37,15 +35,7 @@ export const theme = {
       fontSize: 16,
     },
   },
-  spacing: {
-    defaultEdgePadding: 16,
-    xxs: 2,
-    xs: 4,
-    s: 8,
-    m: 16,
-    l: 24,
-    xl: 40,
-  },
+  spacing: SPACING,
 };
 
 export const darkTheme = {

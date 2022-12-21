@@ -1,3 +1,5 @@
-export const TYPOGRAPHY = {
-  MAIN_APP_HEADING: 'PressStart2P_400Regular',
+const TYPOGRAPHY = {
+  PRESSSTART_400: 'PressStart2P_400Regular',
 };
+
+export default TYPOGRAPHY;
