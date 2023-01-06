@@ -1,4 +1,4 @@
 # collected
-Vinyl collection companion
+Vinyl collector companion
 
 Welcome!
