@@ -1,37 +1,56 @@
 import React from 'react';
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button, DevSettings } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import LoadingScreen from './features/loadingScreen/LoadingScreen';
+import AppHeader from './components/AppHeader';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View
+    <SafeAreaView style={[styles.container]}>
+      <StatusBar
+        style="dark"
+        animated={true}
+        translucent={true}
+        // backgroundColor="#29292988"
+      />
+      <LoadingScreen />
+      <AppHeader />
+
+      {/* <View
         style={{
-          marginHorizontal: 16,
-          borderColor: 'red',
+          // flex: 1,
+          // marginHorizontal: 16,
+          borderColor: 'blue',
           borderWidth: 2,
           alignItems: 'center',
+          backgroundColor: '#FFFFFF88',
         }}
       >
-        <Text>AYEEEE what the hell is happening here????</Text>
-        {/* <Button
-          title={'isPalindrome????'}
-          onPress={() => {
-            const result = isPalindrome(12321);
-            console.log('RESULTTTT', result, '\n');
+        <Text
+          style={{
+            marginBottom: 100,
+            marginHorizontal: 16,
+            fontFamily: 'PressStart2P_400Regular',
+            fontSize: 30,
+            alignSelf: 'flex-end',
           }}
-        /> */}
-      </View>
-      {/* <StatusBar style="auto" /> */}
-    </View>
+        >
+          Collected
+        </Text>
+        <Button title={'reload stuff'} onPress={() => DevSettings.reload()} />
+      </View> */}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lavender',
+    backgroundColor: '#edd3bb',
     // alignItems: "center",
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    borderColor: 'red',
+    borderWidth: 2,
   },
 });
