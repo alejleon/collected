@@ -4,20 +4,24 @@ import { StyleSheet, Text, View, Button, DevSettings } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './components/AppHeader';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './navigation/TabNavigator';
 
 export default function App() {
   return (
-    <SafeAreaView style={[styles.container]}>
-      <StatusBar
-        style="dark"
-        animated={true}
-        translucent={true}
-        // backgroundColor="#29292988"
-      />
-      <LoadingScreen />
-      <AppHeader />
+    <NavigationContainer>
+      <SafeAreaView style={[styles.container]}>
+        <StatusBar
+          style="dark"
+          animated={true}
+          translucent={true}
+          // backgroundColor="#29292988"
+        />
+        <LoadingScreen />
+        <AppHeader />
+        <TabNavigator />
 
-      {/* <View
+        {/* <View
         style={{
           // flex: 1,
           // marginHorizontal: 16,
@@ -40,7 +44,8 @@ export default function App() {
         </Text>
         <Button title={'reload stuff'} onPress={() => DevSettings.reload()} />
       </View> */}
-    </SafeAreaView>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
