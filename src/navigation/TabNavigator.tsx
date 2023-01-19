@@ -7,9 +7,11 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
+    // <View>
+    //   <Text>Hello there</Text>
+    // </View>
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Secondary" component={Home} />
     </Tab.Navigator>
   );
 };

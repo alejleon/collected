@@ -6,6 +6,25 @@ import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './components/AppHeader';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './navigation/TabNavigator';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
+
+function Settings() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings</Text>
+    </View>
+  );
+}
 
 export default function App() {
   return (
@@ -17,33 +36,14 @@ export default function App() {
           translucent={true}
           // backgroundColor="#29292988"
         />
-        <LoadingScreen />
-        <AppHeader />
-        <TabNavigator />
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Settings" component={Settings} />
+        </Tab.Navigator>
 
-        {/* <View
-        style={{
-          // flex: 1,
-          // marginHorizontal: 16,
-          borderColor: 'blue',
-          borderWidth: 2,
-          alignItems: 'center',
-          backgroundColor: '#FFFFFF88',
-        }}
-      >
-        <Text
-          style={{
-            marginBottom: 100,
-            marginHorizontal: 16,
-            fontFamily: 'PressStart2P_400Regular',
-            fontSize: 30,
-            alignSelf: 'flex-end',
-          }}
-        >
-          Collected
-        </Text>
-        <Button title={'reload stuff'} onPress={() => DevSettings.reload()} />
-      </View> */}
+        {/* <LoadingScreen /> */}
+        {/* <AppHeader /> */}
+        {/* <TabNavigator /> */}
       </SafeAreaView>
     </NavigationContainer>
   );
