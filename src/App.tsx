@@ -5,26 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './components/AppHeader';
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './navigation/TabNavigator';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function Settings() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings</Text>
-    </View>
-  );
-}
+import AppNavigation from './navigation/AppNavigation';
 
 export default function App() {
   return (
@@ -36,14 +17,9 @@ export default function App() {
           translucent={true}
           // backgroundColor="#29292988"
         />
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Settings" component={Settings} />
-        </Tab.Navigator>
-
-        {/* <LoadingScreen /> */}
-        {/* <AppHeader /> */}
-        {/* <TabNavigator /> */}
+        <LoadingScreen />
+        <AppHeader />
+        <AppNavigation />
       </SafeAreaView>
     </NavigationContainer>
   );
