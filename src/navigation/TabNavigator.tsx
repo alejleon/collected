@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../features/appState/screens/Home';
 import Settings from '../features/appState/screens/Settings';
@@ -15,7 +14,11 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{ title: 'Home YAHH', tabBarLabel: 'Home oooof' }}
+        options={{
+          title: 'Home YAHH',
+          tabBarLabel: 'Home oooof',
+          headerShown: false,
+        }}
       />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
