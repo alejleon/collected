@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './components/AppHeader';
 import { NavigationContainer } from '@react-navigation/native';
-import AppNavigation from './navigation/AppNavigation';
+import AppMainNavigation from './navigation/AppMainNavigation';
 
 export default function App() {
   return (
@@ -19,7 +19,7 @@ export default function App() {
         />
         <LoadingScreen />
         <AppHeader />
-        <AppNavigation />
+        <AppMainNavigation />
       </SafeAreaView>
     </NavigationContainer>
   );
