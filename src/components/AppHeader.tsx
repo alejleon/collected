@@ -1,11 +1,17 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const AppHeader = ({ navigation }) => {
+const AppHeader = () => {
+  const nav = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>COLLECTED</Text>
-      <Pressable onPress={() => navigation.openDrawer()}>
+      <Pressable
+        style={{ borderColor: 'red', borderWidth: 1 }}
+        onPress={() => alert('hiya')}
+      >
         <Text>MENU</Text>
       </Pressable>
     </View>
