@@ -1,10 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const AppHeader = () => {
+  const nav = useNavigation();
+
   return (
     <View style={styles.container}>
+      <View />
       <Text style={styles.heading}>COLLECTED</Text>
+      <Pressable
+        style={{ borderColor: 'red', borderWidth: 1 }}
+        onPress={() => alert('hiya')}
+      >
+        <Text>MENU</Text>
+      </Pressable>
     </View>
   );
 };
@@ -14,9 +24,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#edd3bb',
     marginHorizontal: 16,
     marginTop: 16,
-    alignItems: 'center',
+    // alignItems: 'center',
     borderColor: 'red',
     borderWidth: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   heading: {
     fontFamily: 'PressStart2P_400Regular',
