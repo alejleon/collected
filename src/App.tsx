@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, DevSettings } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LoadingScreen from './features/loadingScreen/LoadingScreen';
-import AppHeader from './components/AppHeader';
+import AppHeader from './features/appState/components/AppHeader';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './navigation/TabNavigator';
 

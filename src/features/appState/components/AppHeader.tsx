@@ -7,6 +7,7 @@ const AppHeader = () => {
 
   return (
     <View style={styles.container}>
+      <View />
       <Text style={styles.heading}>COLLECTED</Text>
       <Pressable
         style={{ borderColor: 'red', borderWidth: 1 }}
