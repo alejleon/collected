@@ -7,8 +7,12 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home" ScreenOptions={{}}>
-      <Stack.Screen name="Home" component={TabNavigator} />
+    <Stack.Navigator initialRouteName="MainHome" screenOptions={{}}>
+      <Stack.Screen
+        name="MainHome"
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="Settings" component={SideMenu} />
     </Stack.Navigator>
   );
