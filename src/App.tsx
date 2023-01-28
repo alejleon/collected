@@ -6,6 +6,7 @@ import LoadingScreen from './features/loadingScreen/LoadingScreen';
 import AppHeader from './features/appState/components/AppHeader';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './navigation/TabNavigator';
+import StackNavigator from './navigation/StackNavigator';
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
         />
         <LoadingScreen />
         <AppHeader />
-        <TabNavigator />
+        {/* <TabNavigator /> */}
+        <StackNavigator />
       </SafeAreaView>
     </NavigationContainer>
   );
