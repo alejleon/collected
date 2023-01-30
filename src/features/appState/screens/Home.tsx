@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AppHeader from '../components/AppHeader';
 
 const Home = () => {
   const nav = useNavigation();
 
   return (
     <View>
+      <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
