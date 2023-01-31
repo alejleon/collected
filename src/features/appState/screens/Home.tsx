@@ -7,17 +7,20 @@ const Home = () => {
   const nav = useNavigation();
 
   return (
-    <View>
+    <View style={{ borderColor: 'red', borderWidth: 2 }}>
       <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
-      <Pressable
+      {/* <Pressable
         style={{ height: 200, width: 200, backgroundColor: 'red' }}
         onPress={() => alert('lol, theres no drawer anymore')}
       >
         <Text>PRESS ME FOR DRAWER</Text>
-      </Pressable>
+      </Pressable> */}
+
+      {/* <SvgIcon src={Send} /> */}
+      {/* <MenuIcon height={500} width={500} scale={0.5} /> */}
     </View>
   );
 };

@@ -2,22 +2,25 @@ import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 // import SvgIcon from './SvgIcon';
-import MenuIcon from '../../../../assets/icons/menuIcon.svg';
+import HamburgerMenu from '../../../../assets/icons/hamburgerMenu.svg';
 
 const AppHeader = () => {
   const nav = useNavigation();
 
   return (
     <View style={styles.container}>
-      <View />
+      <View style={{ width: 30 }} />
       <Text style={styles.heading}>COLLECTED</Text>
       <Pressable
-        style={{ borderColor: 'red', borderWidth: 1 }}
+        style={{
+          borderColor: 'blue',
+          borderWidth: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
         onPress={() => alert('hiya')}
       >
-        <Text>MENU</Text>
-        {/* <MenuIcon /> */}
-        {/* <SvgIcon /> */}
+        <HamburgerMenu height={15} width={35} fill={'blue'} />
       </Pressable>
     </View>
   );
@@ -32,11 +35,14 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderWidth: 2,
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   heading: {
     fontFamily: 'PressStart2P_400Regular',
     fontSize: 30,
+    paddingTop: 14,
+    color: 'red',
   },
 });
 
