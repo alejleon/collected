@@ -13,14 +13,12 @@ const AppHeader = () => {
       <Text style={styles.heading}>COLLECTED</Text>
       <Pressable
         style={{
-          borderColor: 'blue',
-          borderWidth: 1,
           alignItems: 'center',
           justifyContent: 'center',
         }}
         onPress={() => alert('hiya')}
       >
-        <HamburgerMenu height={15} width={35} fill={'blue'} />
+        <HamburgerMenu height={15} width={35} fill={'#292929'} />
       </Pressable>
     </View>
   );
