@@ -1,8 +1,6 @@
 export type AppState = {
-  bears: number;
-  currentTheme: Theme;
-  increaseBearPopulation: () => void;
-  killAllBears: () => void;
+  appTheme: Theme;
+  setAppTheme: (theme: Theme) => void;
 };
 
 export enum Theme {
