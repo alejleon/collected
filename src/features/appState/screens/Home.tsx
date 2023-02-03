@@ -13,10 +13,10 @@ const Home = () => {
   //   console.log('loaded HOME');
   // }, []);
 
-  // const results = AppStore((state) => state.AppStore);
-  const { appTheme } = useStore(useAppStore);
+  const results = AppStore((state) => state.appTheme);
+  // const { appTheme } = useStore(state);
 
-  console.log('STATE', appTheme);
+  console.log('STATE', results);
 
   return (
     <View style={styles.container}>
