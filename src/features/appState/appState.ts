@@ -1,13 +1,8 @@
-import create from 'zustand';
+import { StateCreator } from 'zustand';
 import { AppState } from './types/appStateTypes';
 import { Theme } from './types/appStateTypes';
 
-// const createAppSlice = create<AppState>((set) => ({
-//   appTheme: Theme.LIGHT,
-//   setAppTheme: (theme: Theme) => set({ appTheme: theme }),
-// }));
-
-export const createAppSlice = (set) => ({
+const createAppSlice: StateCreator<AppState, [], [], AppState> = (set) => ({
   appTheme: Theme.LIGHT,
   setAppTheme: (theme: Theme) => set({ appTheme: theme }),
 });
