@@ -3,10 +3,13 @@ import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
+import { Theme } from '../types/appStateTypes';
 
 const Home = () => {
   const nav = useNavigation();
-  const { appTheme } = useBoundStore((state) => state);
+  const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
+
+  console.log('isDarkTheme', isDarkTheme);
 
   return (
     <View style={styles.container}>
@@ -14,7 +17,8 @@ const Home = () => {
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
-      <Button onPress={() => alert('pressed')} title={'helloo'} />
+      <Button onPress={() => toggleAppTheme()} title={'Light'} />
+      {/* <Button onPress={() => setAppTheme(Theme.DARK)} title={'Dark'} /> */}
     </View>
   );
 };
