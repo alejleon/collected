@@ -17,7 +17,7 @@ const Home = () => {
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
-      <Button onPress={() => toggleAppTheme()} title={'Light'} />
+      <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} />
       {/* <Button onPress={() => setAppTheme(Theme.DARK)} title={'Dark'} /> */}
     </View>
   );

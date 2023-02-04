@@ -1,8 +1,8 @@
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import createAppSlice from '../features/appState/appState';
 import { AppState } from '../features/appState/types/appStateTypes';
-// import AsyncStorage from '@react-native-community/async-storage';
 
 export const useBoundStore = create<AppState>()(
   persist(
@@ -11,12 +11,19 @@ export const useBoundStore = create<AppState>()(
     }),
     {
       name: 'appState',
-      // storage: createJSONStorage(() => AsyncStorage),
+      getStorage: () => AsyncStorage,
       partialize: (state) => ({
         isDarkTheme: state.isDarkTheme,
       }),
+      onRehydrateStorage: () => {
+        return (state, error) => {
+          if (error) {
+            console.log('Rehydration error', error);
+          } else {
+            console.log('Hydration complete');
+          }
+        };
+      },
     }
   )
 );
-
-// TODO: Add persistence, but only to the appState slice
