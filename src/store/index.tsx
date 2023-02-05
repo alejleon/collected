@@ -1,5 +1,5 @@
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createAppSlice from '../features/app/state/appSlice';
 import { AppState } from '../features/app/types/appTypes';
@@ -11,7 +11,7 @@ export const useBoundStore = create<AppState>()(
     }),
     {
       name: 'appState',
-      getStorage: () => AsyncStorage,
+      storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({
         isDarkTheme: state.isDarkTheme,
       }),

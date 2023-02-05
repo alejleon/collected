@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './navigation/StackNavigator';
-import LoadingScreen from './features/loadingScreen/LoadingScreen';
+import LoadingScreen from './features/app/components/LoadingScreen';
 
 export default function App() {
   return (
