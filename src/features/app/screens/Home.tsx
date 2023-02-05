@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
-import { Theme } from '../types/appStateTypes';
 
 const Home = () => {
-  const nav = useNavigation();
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   console.log('isDarkTheme', isDarkTheme);
@@ -18,7 +15,6 @@ const Home = () => {
         This is the Home tab
       </Text>
       <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} />
-      {/* <Button onPress={() => setAppTheme(Theme.DARK)} title={'Dark'} /> */}
     </View>
   );
 };

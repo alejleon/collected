@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SideMenu from '../features/appState/screens/SideMenu';
+import SideMenu from '../features/app/screens/SideMenu';
 import TabNavigator from './TabNavigator';
 
 const Stack = createStackNavigator();
