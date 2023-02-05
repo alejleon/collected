@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../features/appState/screens/Home';
-import Settings from '../features/appState/screens/Settings';
+import Home from '../features/app/screens/Home';
+import Settings from '../features/app/screens/Settings';
 
 const Tab = createBottomTabNavigator();
 

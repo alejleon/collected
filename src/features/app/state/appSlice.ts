@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { AppState } from './types/appStateTypes';
+import { AppState } from '../types/appTypes';
 
 const createAppSlice: StateCreator<AppState, [], [], AppState> = (
   set,
