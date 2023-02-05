@@ -1,9 +1,12 @@
-import create from 'zustand';
-import { State } from './types/appStateTypes';
+import { StateCreator } from 'zustand';
+import { AppState } from './types/appStateTypes';
 
-const useAppState = create((set) => ({
-  bears: 0,
-  increaseBearPopulation: () =>
-    set((state: State) => ({ bears: state.bears + 1 })),
-  killAllBears: () => set({ bears: 0 }),
-}));
+const createAppSlice: StateCreator<AppState, [], [], AppState> = (
+  set,
+  get
+) => ({
+  isDarkTheme: false,
+  toggleAppTheme: () => set({ isDarkTheme: !get().isDarkTheme }),
+});
+
+export default createAppSlice;

@@ -1,5 +1,4 @@
 export type AppState = {
-  bears: number;
-  increaseBearPopulation: () => void;
-  killAllBears: () => void;
+  isDarkTheme: boolean;
+  toggleAppTheme: () => void;
 };
