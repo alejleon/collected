@@ -1,28 +1,34 @@
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AppHeader from '../components/AppHeader';
+import { useBoundStore } from '../../../store';
+import { Theme } from '../types/appStateTypes';
 
 const Home = () => {
   const nav = useNavigation();
+  const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
+
+  console.log('isDarkTheme', isDarkTheme);
 
   return (
-    <View style={{ borderColor: 'red', borderWidth: 2 }}>
+    <View style={styles.container}>
       <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
-      {/* <Pressable
-        style={{ height: 200, width: 200, backgroundColor: 'red' }}
-        onPress={() => alert('lol, theres no drawer anymore')}
-      >
-        <Text>PRESS ME FOR DRAWER</Text>
-      </Pressable> */}
-
-      {/* <SvgIcon src={Send} /> */}
-      {/* <MenuIcon height={500} width={500} scale={0.5} /> */}
+      <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} />
+      {/* <Button onPress={() => setAppTheme(Theme.DARK)} title={'Dark'} /> */}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 2,
+  },
+});
 
 export default Home;

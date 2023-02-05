@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { theme, darkTheme } from '../styles';
+import { useBoundStore } from '../store';
 
 const useTheme = () => {
   // will grab the current theme from state/async storage
@@ -11,14 +12,12 @@ const useTheme = () => {
   //   console.log('dark theme');
   // }
 
-  const [theme, setTheme] = useState('light');
+  const { appTheme, setAppTheme } = useBoundStore((state) => state);
+  // const [theme, setTheme] = useState('light');
 
-  useEffect(() => {
-    const theme = 'light';
-    setTheme(theme);
-  }, []);
-
-  // return { theme, setTheme, currentTheme };
+  return { appTheme, setAppTheme, isDarkTheme: appTheme === 'dark' };
 };
 
 export default useTheme;
+
+// NOTE: might not need this hook with zustand persistence set up.
