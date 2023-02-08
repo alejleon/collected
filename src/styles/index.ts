@@ -2,7 +2,7 @@ import TYPOGRAPHY from './typography';
 import SPACING from './spacing';
 import COLORS from './colors';
 
-export const GLOBALS = {
+export const GLOBALSTYLES = {
   TYPOGRAPHY,
   SPACING,
   COLORS,
@@ -42,6 +42,6 @@ export const darkTheme = {
   ...lightTheme,
   colors: {
     primary: '#292929',
-    background: '#121212',
+    background: '#292929',
   },
 };
