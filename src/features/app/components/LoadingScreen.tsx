@@ -16,7 +16,6 @@ const LoadingScreen = () => {
   });
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   SplashScreen.preventAutoHideAsync();
-  // will probably load asyncstorage Data from here // TODO:
 
   useEffect(() => {
     if (fontsLoaded) {

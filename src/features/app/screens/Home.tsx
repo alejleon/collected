@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react';
-import { View, Text, Button, Pressable, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
-import { Theme } from '../types/appStateTypes';
+import useTheme from '../../../hooks/useTheme';
 
 const Home = () => {
-  const nav = useNavigation();
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   console.log('isDarkTheme', isDarkTheme);
+  const { theme, GLOBALS } = useTheme();
+
+  // console.log('GLOBALS', GLOBALS.SPACING.STANDARD_EDGE);
+  // console.log('theme color', theme.colors.primary, '\n');
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
       <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} />
-      {/* <Button onPress={() => setAppTheme(Theme.DARK)} title={'Dark'} /> */}
     </View>
   );
 };

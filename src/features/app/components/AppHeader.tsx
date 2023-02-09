@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-// import SvgIcon from './SvgIcon';
+// import { useNavigation } from '@react-navigation/native';
 import HamburgerMenu from '../../../../assets/icons/hamburgerMenu.svg';
+import useTheme from '../../../hooks/useTheme';
+import { GLOBALSTYLES } from '../../../styles';
+
+const { COLORS } = GLOBALSTYLES;
 
 const AppHeader = () => {
-  const nav = useNavigation();
+  // const nav = useNavigation();
+  const theme = useTheme();
 
   return (
     <View style={styles.container}>
@@ -26,10 +30,9 @@ const AppHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#edd3bb',
+    // backgroundColor: '#edd3bb',
     marginHorizontal: 16,
     marginTop: 16,
-    // alignItems: 'center',
     borderColor: 'red',
     borderWidth: 2,
     flexDirection: 'row',
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     fontFamily: 'PressStart2P_400Regular',
     fontSize: 30,
     paddingTop: 14,
-    color: 'red',
+    color: COLORS.RED_ORANGE,
   },
 });
 
