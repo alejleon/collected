@@ -2,14 +2,21 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
+import useTheme from '../../../hooks/useTheme';
 
 const Home = () => {
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   console.log('isDarkTheme', isDarkTheme);
+  const { theme, GLOBALS } = useTheme();
+
+  // console.log('GLOBALS', GLOBALS.SPACING.STANDARD_EDGE);
+  // console.log('theme color', theme.colors.primary, '\n');
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+    >
       <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
