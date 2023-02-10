@@ -10,7 +10,7 @@ export const globalStyles = {
 
 export const lightTheme = {
   colors: {
-    primary: '#FF0000',
+    primary: '#292929',
     secondary: '#FF0000',
     background: '#F5F5F5',
     surface: '#FFFFFF',
@@ -41,7 +41,7 @@ export const lightTheme = {
 export const darkTheme = {
   ...lightTheme,
   colors: {
-    primary: '#292929',
+    primary: '#F5F5F5',
     background: '#292929',
   },
 };

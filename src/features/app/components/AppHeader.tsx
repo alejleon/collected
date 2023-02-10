@@ -6,7 +6,7 @@ import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import SideMenuModal from '../modals/SideMenuModal';
 
-const { palette } = globalStyles;
+const { palette, typography } = globalStyles;
 
 const AppHeader = () => {
   // const nav = useNavigation();
@@ -24,7 +24,7 @@ const AppHeader = () => {
         }}
         onPress={() => setModalIsActive(true)}
       >
-        <HamburgerMenu height={15} width={35} fill={'#292929'} />
+        <HamburgerMenu height={15} width={35} fill={theme.colors.primary} />
       </Pressable>
       <SideMenuModal
         isVisible={modalIsActive}
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   heading: {
-    fontFamily: 'PressStart2P_400Regular',
     fontSize: 30,
     paddingTop: 14,
     color: palette.RED_ORANGE,
+    fontFamily: typography.RUBIKMONOONE_400,
   },
 });
 

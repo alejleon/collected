@@ -4,9 +4,10 @@ import Modal from 'react-native-modal';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 
+const { spacing, typography } = globalStyles;
+
 const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
   const theme = useTheme();
-  const { spacing } = globalStyles;
 
   return (
     <Modal
@@ -32,8 +33,15 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
           },
         ]}
       >
-        <View style={{ marginHorizontal: spacing.STANDARD_EDGE }}>
-          <Text></Text>
+        <View
+          style={[
+            styles.headingContainer,
+            { paddingHorizontal: spacing.STANDARD_EDGE },
+          ]}
+        >
+          <Text style={[styles.headingText, { color: theme.colors.primary }]}>
+            Collected
+          </Text>
         </View>
         <View style={{ flex: 1, backgroundColor: 'pink' }} />
       </View>
@@ -53,8 +61,19 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     paddingVertical: 16,
     // paddingHorizontal: GLOBALSTYLES.SPACING.STANDARD_EDGE,
-    borderColor: 'red',
-    borderWidth: 2,
+    // borderColor: 'red',
+    // borderWidth: 2,
+  },
+  headingContainer: {
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    // borderColor: 'blue',
+    // borderWidth: 2,
+    paddingBottom: 16,
+  },
+  headingText: {
+    fontFamily: typography.RUBIKMONOONE_400,
+    fontSize: 26,
   },
 });
 
