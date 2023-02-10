@@ -1,11 +1,11 @@
-import TYPOGRAPHY from './typography';
-import SPACING from './spacing';
-import COLORS from './colors';
+import typography from './typography';
+import spacing from './spacing';
+import palette from './palette';
 
-export const GLOBALSTYLES = {
-  TYPOGRAPHY,
-  SPACING,
-  COLORS,
+export const globalStyles = {
+  typography,
+  spacing,
+  palette,
 };
 
 export const lightTheme = {
@@ -25,7 +25,7 @@ export const lightTheme = {
   },
   textVariants: {
     header: {
-      fontFamily: TYPOGRAPHY.PRESSSTART_400,
+      fontFamily: typography.PRESSSTART_400,
       fontSize: 24,
       lineHeight: 24,
       letterSpacing: 0.15,
@@ -35,7 +35,7 @@ export const lightTheme = {
       fontSize: 16,
     },
   },
-  spacing: SPACING,
+  spacing: spacing,
 };
 
 export const darkTheme = {

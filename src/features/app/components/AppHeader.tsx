@@ -3,10 +3,10 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import HamburgerMenu from '../../../../assets/icons/hamburgerMenu.svg';
 import useTheme from '../../../hooks/useTheme';
-import { GLOBALSTYLES } from '../../../styles';
+import { globalStyles } from '../../../styles';
 import SideMenuModal from '../modals/SideMenuModal';
 
-const { COLORS } = GLOBALSTYLES;
+const { palette } = globalStyles;
 
 const AppHeader = () => {
   // const nav = useNavigation();
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontFamily: 'PressStart2P_400Regular',
     fontSize: 30,
     paddingTop: 14,
-    color: COLORS.RED_ORANGE,
+    color: palette.RED_ORANGE,
   },
 });
 

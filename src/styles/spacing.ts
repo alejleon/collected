@@ -1,4 +1,4 @@
-const SPACING: Spacing = {
+const spacing: Spacing = {
   STANDARD_EDGE: 16,
   XXS: 2,
   XS: 4,
@@ -18,4 +18,4 @@ type Spacing = {
   XL: number;
 };
 
-export default SPACING;
+export default spacing;

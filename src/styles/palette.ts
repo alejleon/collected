@@ -1,4 +1,4 @@
-const COLORS: Colors = {
+const palette: Palette = {
   RED_ORANGE: '#C72104',
   YELLOW: '#FCBA03',
   BLUE: '#42A4F5',
@@ -7,7 +7,7 @@ const COLORS: Colors = {
   GREY: '#999999',
 };
 
-type Colors = {
+type Palette = {
   RED_ORANGE: string;
   YELLOW: string;
   BLUE: string;
@@ -16,4 +16,4 @@ type Colors = {
   GREY: string;
 };
 
-export default COLORS;
+export default palette;
