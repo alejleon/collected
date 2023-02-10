@@ -7,7 +7,6 @@ import SideMenuModal from '../modals/SideMenuModal';
 
 const Home = () => {
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
-  const [modalIsActive, setModalIsActive] = useState(false);
 
   console.log('isDarkTheme', isDarkTheme);
   const theme = useTheme();
@@ -19,16 +18,11 @@ const Home = () => {
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      <SideMenuModal
-        isVisible={modalIsActive}
-        setModalIsActive={setModalIsActive}
-      />
       <AppHeader />
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
       <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} />
-      <Button onPress={() => setModalIsActive(true)} title={'Turn on modal'} />
     </View>
   );
 };
