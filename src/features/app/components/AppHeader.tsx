@@ -10,13 +10,13 @@ const { palette, typography } = globalStyles;
 
 const AppHeader = () => {
   // const nav = useNavigation();
-  const theme = useTheme();
+  const { colors } = useTheme();
   const [modalIsActive, setModalIsActive] = useState(false);
 
   return (
     <View style={styles.container}>
       <View style={{ width: 30 }} />
-      <Text style={styles.heading}>COLLECTED</Text>
+      <Text style={[styles.heading, { color: colors.primary }]}>COLLECTED</Text>
       <Pressable
         style={{
           alignItems: 'center',
@@ -24,7 +24,7 @@ const AppHeader = () => {
         }}
         onPress={() => setModalIsActive(true)}
       >
-        <HamburgerMenu height={15} width={35} fill={theme.colors.primary} />
+        <HamburgerMenu height={15} width={35} fill={colors.primary} />
       </Pressable>
       <SideMenuModal
         isVisible={modalIsActive}
@@ -36,7 +36,6 @@ const AppHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#edd3bb',
     marginHorizontal: 16,
     marginTop: 16,
     borderColor: 'red',
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     paddingTop: 14,
-    color: palette.RED_ORANGE,
     fontFamily: typography.RUBIKMONOONE_400,
   },
 });

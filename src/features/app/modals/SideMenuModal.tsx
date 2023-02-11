@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text, View, Button, StyleSheet } from 'react-native';
+import { Switch } from 'react-native-switch';
 import Modal from 'react-native-modal';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
+import { useBoundStore } from '../../../store';
 
-const { spacing, typography } = globalStyles;
+const { spacing, typography, palette } = globalStyles;
 
 const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
   const theme = useTheme();
+  const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   return (
     <Modal
@@ -33,17 +36,21 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
           },
         ]}
       >
-        <View
-          style={[
-            styles.headingContainer,
-            { paddingHorizontal: spacing.STANDARD_EDGE },
-          ]}
-        >
+        <View style={styles.headingContainer}>
           <Text style={[styles.headingText, { color: theme.colors.primary }]}>
             Collected
           </Text>
         </View>
-        <View style={{ flex: 1, backgroundColor: 'pink' }} />
+        <View style={styles.bodyContainer}>
+          <View style={styles.toggleContainer}>
+            <Text style={styles.optionText}>Dark mode</Text>
+            <Switch
+              value={isDarkTheme}
+              onValueChange={toggleAppTheme}
+              barHeight={28}
+            />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -59,21 +66,31 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '70%',
     alignSelf: 'flex-end',
-    paddingVertical: 16,
-    // paddingHorizontal: GLOBALSTYLES.SPACING.STANDARD_EDGE,
-    // borderColor: 'red',
-    // borderWidth: 2,
   },
   headingContainer: {
     alignItems: 'flex-start',
     justifyContent: 'center',
-    // borderColor: 'blue',
-    // borderWidth: 2,
-    paddingBottom: 16,
+    paddingHorizontal: spacing.MARGIN_EDGE,
+    backgroundColor: '#3F3F3F',
+    paddingVertical: spacing.MARGIN_BOTTOM_M,
   },
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,
     fontSize: 26,
+  },
+  bodyContainer: {
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 2,
+    paddingHorizontal: spacing.MARGIN_EDGE,
+  },
+  toggleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  optionText: {
+    fontFamily: typography.INTER_900,
   },
 });
 

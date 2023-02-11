@@ -3,16 +3,12 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
-import SideMenuModal from '../modals/SideMenuModal';
 
 const Home = () => {
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   console.log('isDarkTheme', isDarkTheme);
   const theme = useTheme();
-
-  // console.log('GLOBALS', GLOBALS.SPACING.STANDARD_EDGE);
-  // console.log('theme color', theme.colors.primary, '\n');
 
   return (
     <View
