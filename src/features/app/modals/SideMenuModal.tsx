@@ -9,7 +9,7 @@ import { useBoundStore } from '../../../store';
 const { spacing, typography, palette } = globalStyles;
 
 const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
 
   return (
@@ -22,22 +22,30 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
       onSwipeComplete={() => setModalIsActive(false)}
       swipeDirection={['right']}
       swipeThreshold={30}
-      style={{
-        marginHorizontal: 0,
-        marginVertical: 0,
-        height: '100%',
-      }}
+      style={styles.modalContainer}
+      // animationInTiming={300}
+      // animationOutTiming={300}
+      // backdropTransitionInTiming={300}
+      // backdropTransitionOutTiming={300}
+      // coverScreen={true}
+      // backdropOpacity={0.7}
+      // panResponderThreshold={4}
     >
       <View
         style={[
           styles.container,
           {
-            backgroundColor: theme.colors.background,
+            backgroundColor: colors.background,
           },
         ]}
       >
-        <View style={styles.headingContainer}>
-          <Text style={[styles.headingText, { color: theme.colors.primary }]}>
+        <View
+          style={[
+            styles.headingContainer,
+            { backgroundColor: colors.secondary },
+          ]}
+        >
+          <Text style={[styles.headingText, { color: colors.primary }]}>
             Collected
           </Text>
         </View>
@@ -47,7 +55,15 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
             <Switch
               value={isDarkTheme}
               onValueChange={toggleAppTheme}
-              barHeight={28}
+              // barHeight={28}
+              circleSize={25}
+              circleBorderWidth={0.5}
+              renderActiveText={false}
+              renderInActiveText={false}
+              backgroundActive={'#595959'}
+              circleActiveColor={palette.RED_ORANGE}
+              // switchLeftPx={2}
+              // switchRightPx={2}
             />
           </View>
         </View>
@@ -62,6 +78,11 @@ type SideMenuModalProps = {
 };
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    marginHorizontal: 0,
+    marginVertical: 0,
+    height: '100%',
+  },
   container: {
     height: '100%',
     width: '70%',
@@ -71,7 +92,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingHorizontal: spacing.MARGIN_EDGE,
-    backgroundColor: '#3F3F3F',
+    // backgroundColor: palette.LIGHT_GRAY,
+    // backgroundColor: palette.LIGHT_GRAY,
     paddingVertical: spacing.MARGIN_BOTTOM_M,
   },
   headingText: {
@@ -80,8 +102,9 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 1,
-    borderColor: 'red',
-    borderWidth: 2,
+    paddingTop: spacing.M,
+    // borderColor: 'red',
+    // borderWidth: 2,
     paddingHorizontal: spacing.MARGIN_EDGE,
   },
   toggleContainer: {
