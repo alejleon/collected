@@ -43,6 +43,6 @@ export const darkTheme = {
   colors: {
     primary: '#F5F5F5',
     secondary: palette.LIGHT_GREY,
-    background: palette.DARK_GREY,
+    background: palette.DARK_GREY_1,
   },
 };

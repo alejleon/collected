@@ -11,10 +11,10 @@ export default function App() {
     <NavigationContainer>
       <SafeAreaView style={[styles.container]}>
         <StatusBar
-          style="dark"
+          style="auto"
           animated={true}
           translucent={true}
-          // backgroundColor="#29292988"
+          // backgroundColor="#18181888"
         />
         <LoadingScreen />
         <StackNavigator />

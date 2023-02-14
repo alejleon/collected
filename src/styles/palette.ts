@@ -2,27 +2,29 @@ const palette: Palette = {
   RED_ORANGE: '#C72104',
   YELLOW: '#FCBA03',
   BLUE: '#42A4F5',
-  LIGHT_GREY: '#595959',
-  DARK_GREY: '#333333',
-  OFF_BLACK: '#292929',
-  BLACK: '#121212',
+
   OFF_WHITE: '#F5F5F5',
-  GREY: '#999999',
+  LIGHT_GREY: '#E4E6EB',
+  GREY: '#B0B3B8',
+  GREY_2: '#595959',
+  DARK_GREY_3: '#3A3B3C',
+  DARK_GREY_2: '#242526',
+  DARK_GREY_1: '#181818',
+  // LIGHT_GREY: '#595959',
 };
 
 type Palette = {
   RED_ORANGE: string;
   YELLOW: string;
   BLUE: string;
-  LIGHT_GREY: string;
-  DARK_GREY: string;
-  OFF_BLACK: string;
-  BLACK: string;
+
   OFF_WHITE: string;
+  LIGHT_GREY: string;
   GREY: string;
+  GREY_2: string;
+  DARK_GREY_1: string;
+  DARK_GREY_2: string;
+  DARK_GREY_3: string;
 };
 
 export default palette;
-
-
-// #3f3f3f DARK LIGHT GREY
