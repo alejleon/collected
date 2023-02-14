@@ -3,6 +3,9 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
+import { globalStyles } from '../../../styles';
+
+const { spacing, typography, palette } = globalStyles;
 
 const Home = () => {
   const { isDarkTheme } = useBoundStore((state) => state);
@@ -17,23 +20,23 @@ const Home = () => {
         This is the Home tab
       </Text>
       <View style={{ flexDirection: 'row' }}>
-        <View style={[styles.colorBox, { backgroundColor: '#181818' }]}>
-          <Text style={styles.boxText}>#181818</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_100 }]}>
+          <Text style={styles.boxText}>100</Text>
         </View>
-        <View style={[styles.colorBox, { backgroundColor: '#242526' }]}>
-          <Text style={styles.boxText}>#242526</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_300 }]}>
+          <Text style={styles.boxText}>300</Text>
         </View>
-        <View style={[styles.colorBox, { backgroundColor: '#3A3B3C' }]}>
-          <Text style={styles.boxText}>#3A3B3C</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_500 }]}>
+          <Text style={styles.boxText}>500</Text>
         </View>
-        <View style={[styles.colorBox, { backgroundColor: '#E4E6EB' }]}>
-          <Text style={styles.boxText}>#E4E6EB</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_700 }]}>
+          <Text style={styles.boxText}>700</Text>
         </View>
-        <View style={[styles.colorBox, { backgroundColor: '#595959' }]}>
-          <Text style={styles.boxText}>#F5F5F5</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_800 }]}>
+          <Text style={styles.boxText}>800</Text>
         </View>
-        <View style={[styles.colorBox, { backgroundColor: '#B0B3B8' }]}>
-          <Text style={styles.boxText}>#B0B3B8</Text>
+        <View style={[styles.colorBox, { backgroundColor: palette.GREY_900 }]}>
+          <Text style={styles.boxText}>900</Text>
         </View>
       </View>
       {/* <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} /> */}

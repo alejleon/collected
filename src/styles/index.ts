@@ -11,7 +11,7 @@ export const globalStyles = {
 export const lightTheme = {
   colors: {
     primary: '#292929',
-    secondary: palette.LIGHT_GREY,
+    secondary: palette.GREY_300,
     background: palette.OFF_WHITE,
     surface: '#FFFFFF',
     error: '#B00020',
@@ -42,7 +42,7 @@ export const darkTheme = {
   ...lightTheme,
   colors: {
     primary: '#F5F5F5',
-    secondary: palette.LIGHT_GREY,
-    background: palette.DARK_GREY_1,
+    secondary: palette.GREY_700,
+    background: palette.GREY_900,
   },
 };
