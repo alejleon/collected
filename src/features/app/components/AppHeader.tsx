@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   divider: {
-    // width: '100%',
-    marginHorizontal: spacing.STANDARD_EDGE,
+    marginHorizontal: spacing.XL,
     borderBottomColor: palette.RED_ORANGE,
     borderBottomWidth: 1,
   },

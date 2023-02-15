@@ -16,7 +16,10 @@ const Home = () => {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <AppHeader />
-      <View style={styles.content}></View>
+      <View style={styles.content}>
+        <Text>To get started, connect with your Discogs account!</Text>
+        <Text>Continue without connecting</Text>
+      </View>
       {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text> */}
@@ -50,7 +53,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  content: {},
+  content: {
+    paddingHorizontal: spacing.STANDARD_EDGE,
+    marginTop: spacing.XL,
+  },
   colorBox: {
     height: 60,
     width: 65,

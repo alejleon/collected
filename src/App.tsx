@@ -5,16 +5,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './navigation/StackNavigator';
 import LoadingScreen from './features/app/components/LoadingScreen';
+import { useBoundStore } from './store';
+import { globalStyles } from './styles';
+
+const { palette } = globalStyles;
 
 export default function App() {
+  const { isDarkTheme } = useBoundStore((state) => state);
+
   return (
     <NavigationContainer>
       <SafeAreaView style={[styles.container]}>
         <StatusBar
-          style="auto"
+          style={isDarkTheme ? 'light' : 'dark'}
           animated={true}
           translucent={true}
-          // backgroundColor="#18181888"
+          backgroundColor={isDarkTheme ? palette.GREY_800 : palette.OFF_WHITE}
         />
         <LoadingScreen />
         <StackNavigator />
