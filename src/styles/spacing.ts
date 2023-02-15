@@ -1,5 +1,5 @@
 const spacing: Spacing = {
-  MARGIN_EDGE: 16,
+  EDGE_SPACING: 16,
   MARGIN_TOP_L: 32,
   MARGIN_TOP_M: 16,
   MARGIN_TOP_S: 8,
@@ -17,7 +17,7 @@ const spacing: Spacing = {
 };
 
 type Spacing = {
-  MARGIN_EDGE: number;
+  EDGE_SPACING: number;
   MARGIN_TOP_L: number;
   MARGIN_TOP_M: number;
   MARGIN_TOP_S: number;

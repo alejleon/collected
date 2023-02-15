@@ -19,6 +19,7 @@ const Home = () => {
       <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text>
+      {/* ////////////// */}
       <View style={{ flexDirection: 'row' }}>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_100 }]}>
           <Text style={styles.boxText}>100</Text>
@@ -39,7 +40,7 @@ const Home = () => {
           <Text style={styles.boxText}>900</Text>
         </View>
       </View>
-      {/* <Button onPress={() => toggleAppTheme()} title={'isDarkMode Toggle'} /> */}
+      {/* ///////////////////////////////////// */}
     </View>
   );
 };

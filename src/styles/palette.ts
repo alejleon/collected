@@ -5,12 +5,15 @@ const palette: Palette = {
 
   WHITE: '#FFFFFF',
   OFF_WHITE: '#F5F5F5',
-  GREY_100: '#E4E6EB',
-  GREY_300: '#B0B3B8',
-  GREY_500: '#595959',
-  GREY_700: '#3A3B3C',
-  GREY_800: '#242526',
-  GREY_900: '#181818',
+  GREY_100: '#E4E7EB',
+  GREY_200: '#CBD2D9',
+  GREY_300: '#9ea7b0',
+  GREY_400: '#7e858c',
+  GREY_500: '#606973',
+  GREY_600: '#4a5259',
+  GREY_700: '#3a424a',
+  GREY_800: '#23272b',
+  GREY_900: '#17191c',
   BLACK: '#000000',
 };
 
@@ -21,13 +24,17 @@ type Palette = {
 
   WHITE: string;
   OFF_WHITE: string;
+  BLACK: string;
+
   GREY_100: string;
+  GREY_200: string;
   GREY_300: string;
+  GREY_400: string;
   GREY_500: string;
+  GREY_600: string;
   GREY_700: string;
   GREY_800: string;
   GREY_900: string;
-  BLACK: string;
 };
 
 export default palette;

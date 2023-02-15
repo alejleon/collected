@@ -6,7 +6,7 @@ import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import SideMenuModal from '../modals/SideMenuModal';
 
-const { palette, typography } = globalStyles;
+const { typography, spacing } = globalStyles;
 
 const AppHeader = () => {
   // const nav = useNavigation();
@@ -14,17 +14,16 @@ const AppHeader = () => {
   const [modalIsActive, setModalIsActive] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.banner }]}>
       <View style={{ width: 30 }} />
-      <Text style={[styles.heading, { color: colors.primary }]}>COLLECTED</Text>
+      <Text style={[styles.heading, { color: colors.primaryText }]}>
+        COLLECTED
+      </Text>
       <Pressable
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
+        style={styles.menuButton}
         onPress={() => setModalIsActive(true)}
       >
-        <HamburgerMenu height={15} width={35} fill={colors.primary} />
+        <HamburgerMenu height={15} width={35} fill={colors.primaryText} />
       </Pressable>
       <SideMenuModal
         isVisible={modalIsActive}
@@ -36,18 +35,19 @@ const AppHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
-    marginTop: 16,
-    borderColor: 'red',
-    borderWidth: 2,
+    paddingHorizontal: spacing.EDGE_SPACING,
+    paddingVertical: spacing.EDGE_SPACING,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   heading: {
     fontSize: 30,
-    paddingTop: 14,
     fontFamily: typography.RUBIKMONOONE_400,
+  },
+  menuButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
