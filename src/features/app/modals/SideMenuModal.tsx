@@ -23,13 +23,6 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
       swipeDirection={['right']}
       swipeThreshold={30}
       style={styles.modalContainer}
-      // animationInTiming={300}
-      // animationOutTiming={300}
-      // backdropTransitionInTiming={300}
-      // backdropTransitionOutTiming={300}
-      // coverScreen={true}
-      // backdropOpacity={0.7}
-      // panResponderThreshold={4}
     >
       <View
         style={[
@@ -42,16 +35,18 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
         <View
           style={[
             styles.headingContainer,
-            { backgroundColor: colors.secondary },
+            { backgroundColor: colors.secondaryText },
           ]}
         >
-          <Text style={[styles.headingText, { color: colors.primary }]}>
+          <Text style={[styles.headingText, { color: colors.primaryText }]}>
             Collected
           </Text>
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.toggleContainer}>
-            <Text style={styles.optionText}>Dark mode</Text>
+            <Text style={[styles.optionText, { color: colors.primaryText }]}>
+              DARK MODE
+            </Text>
             <Switch
               value={isDarkTheme}
               onValueChange={toggleAppTheme}
@@ -91,10 +86,8 @@ const styles = StyleSheet.create({
   headingContainer: {
     alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingHorizontal: spacing.MARGIN_EDGE,
-    // backgroundColor: palette.LIGHT_GRAY,
-    // backgroundColor: palette.LIGHT_GRAY,
-    paddingVertical: spacing.MARGIN_BOTTOM_M,
+    paddingHorizontal: spacing.STANDARD_EDGE,
+    paddingVertical: spacing.STANDARD_EDGE,
   },
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,
@@ -105,7 +98,7 @@ const styles = StyleSheet.create({
     paddingTop: spacing.M,
     // borderColor: 'red',
     // borderWidth: 2,
-    paddingHorizontal: spacing.MARGIN_EDGE,
+    paddingHorizontal: spacing.STANDARD_EDGE,
   },
   toggleContainer: {
     flexDirection: 'row',

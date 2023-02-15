@@ -16,11 +16,12 @@ const Home = () => {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <AppHeader />
-      <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.content}></View>
+      {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
-      </Text>
+      </Text> */}
       {/* ////////////// */}
-      <View style={{ flexDirection: 'row' }}>
+      {/* <View style={{ flexDirection: 'row' }}>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_100 }]}>
           <Text style={styles.boxText}>100</Text>
         </View>
@@ -39,7 +40,7 @@ const Home = () => {
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_900 }]}>
           <Text style={styles.boxText}>900</Text>
         </View>
-      </View>
+      </View> */}
       {/* ///////////////////////////////////// */}
     </View>
   );
@@ -48,9 +49,8 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor: 'red',
-    // borderWidth: 2,
   },
+  content: {},
   colorBox: {
     height: 60,
     width: 65,
