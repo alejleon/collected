@@ -32,15 +32,19 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
           },
         ]}
       >
-        <View
-          style={[
-            styles.headingContainer,
-            { backgroundColor: colors.secondaryText },
-          ]}
-        >
+        <View style={[styles.headingContainer]}>
           <Text style={[styles.headingText, { color: colors.primaryText }]}>
             Collected
           </Text>
+          <View
+            style={{
+              borderBottomColor: palette.RED_ORANGE,
+              borderBottomWidth: 1,
+              // marginHorizontal: spacing.M,
+              width: '100%',
+              paddingTop: spacing.STANDARD_EDGE,
+            }}
+          />
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.toggleContainer}>
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingHorizontal: spacing.STANDARD_EDGE,
-    paddingVertical: spacing.STANDARD_EDGE,
+    paddingTop: spacing.STANDARD_EDGE,
   },
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,
@@ -95,7 +99,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 1,
-    paddingTop: spacing.M,
+    paddingTop: spacing.L,
     // borderColor: 'red',
     // borderWidth: 2,
     paddingHorizontal: spacing.STANDARD_EDGE,
