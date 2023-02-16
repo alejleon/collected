@@ -1,49 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import HamburgerMenu from '../../../../assets/icons/hamburgerMenu.svg';
 import useTheme from '../../../hooks/useTheme';
-import { GLOBALSTYLES } from '../../../styles';
+import { globalStyles } from '../../../styles';
+import palette from '../../../styles/palette';
+import SideMenuModal from '../modals/SideMenuModal';
 
-const { COLORS } = GLOBALSTYLES;
+const { typography, spacing } = globalStyles;
 
 const AppHeader = () => {
   // const nav = useNavigation();
-  const theme = useTheme();
+  const { colors } = useTheme();
+  const [modalIsActive, setModalIsActive] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <View style={{ width: 30 }} />
-      <Text style={styles.heading}>COLLECTED</Text>
-      <Pressable
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onPress={() => alert('hiya')}
-      >
-        <HamburgerMenu height={15} width={35} fill={'#292929'} />
-      </Pressable>
-    </View>
+    <>
+      <View style={[styles.container, {}]}>
+        <View style={{ width: 30 }} />
+        <Text style={[styles.heading, { color: colors.primaryText }]}>
+          COLLECTED
+        </Text>
+        <Pressable
+          style={styles.menuButton}
+          onPress={() => setModalIsActive(true)}
+        >
+          <HamburgerMenu height={15} width={35} fill={colors.primaryText} />
+        </Pressable>
+        <SideMenuModal
+          isVisible={modalIsActive}
+          setModalIsActive={setModalIsActive}
+        />
+      </View>
+      <View style={styles.divider} />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#edd3bb',
-    marginHorizontal: 16,
-    marginTop: 16,
-    borderColor: 'red',
-    borderWidth: 2,
+    paddingHorizontal: spacing.STANDARD_EDGE,
+    paddingVertical: spacing.STANDARD_EDGE,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   heading: {
-    fontFamily: 'PressStart2P_400Regular',
     fontSize: 30,
-    paddingTop: 14,
-    color: COLORS.RED_ORANGE,
+    fontFamily: typography.RUBIKMONOONE_400,
+  },
+  menuButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  divider: {
+    marginHorizontal: spacing.XL,
+    borderBottomColor: palette.RED_ORANGE,
+    borderBottomWidth: 1,
   },
 });
 

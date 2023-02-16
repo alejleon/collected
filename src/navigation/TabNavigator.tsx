@@ -7,10 +7,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      sceneContainerStyle={{ borderColor: 'blue', borderWidth: 2 }}
-    >
+    <Tab.Navigator initialRouteName="Home" sceneContainerStyle={{}}>
       <Tab.Screen
         name="Home"
         component={Home}
