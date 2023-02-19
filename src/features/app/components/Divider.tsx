@@ -1,12 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 
-const Divider = ({ color }: DividerProps) => {
-  return <View style={{ borderBottomColor: color, borderBottomWidth: 1 }} />;
+const Divider = ({ color, style }: DividerProps) => {
+  return (
+    <View
+      style={{ borderBottomColor: color, borderBottomWidth: 1, ...style }}
+    />
+  );
 };
 
 type DividerProps = {
   color?: string;
+  style?: ViewStyle | ViewStyle[];
 };
 
 export default Divider;

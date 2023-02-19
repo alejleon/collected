@@ -6,6 +6,7 @@ import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import palette from '../../../styles/palette';
 import SideMenuModal from '../modals/SideMenuModal';
+import LogoC from '../../../../assets/logoC.svg';
 
 const { typography, spacing } = globalStyles;
 
@@ -18,8 +19,14 @@ const AppHeader = () => {
     <>
       <View style={[styles.container, {}]}>
         <View style={{ width: 30 }} />
+        <LogoC
+          height={36}
+          width={30}
+          fill={colors.primaryText}
+          style={{ marginRight: -34, marginBottom: 3 }}
+        />
         <Text style={[styles.heading, { color: colors.primaryText }]}>
-          COLLECTED
+          OLLECTED
         </Text>
         <Pressable
           style={styles.menuButton}
