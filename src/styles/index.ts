@@ -15,7 +15,7 @@ export const lightTheme = {
     primary: palette.RED_ORANGE,
     secondary: palette.BLUE,
     background: palette.OFF_WHITE,
-    banner: palette.GREY_200,
+    banner: palette.OFF_WHITE,
     card: palette.GREY_200,
     // secondary: palette.GREY_300,
     // error: '#B00020',
