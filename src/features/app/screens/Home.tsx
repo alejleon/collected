@@ -20,7 +20,7 @@ const Home = () => {
         <View style={styles.connectContainer}>
           <View
             style={{
-              backgroundColor: palette.GREY_200,
+              backgroundColor: colors.card,
               height: '93%',
               width: '93%',
               alignSelf: 'flex-end',
@@ -35,7 +35,7 @@ const Home = () => {
           />
           <View
             style={{
-              borderColor: palette.RED_ORANGE,
+              borderColor: colors.secondary,
               borderWidth: 1,
               // flex: 1,
               width: '93%',
@@ -46,10 +46,24 @@ const Home = () => {
               borderRadius: 8,
             }}
           />
-          <Text style={{ marginTop: 40, marginHorizontal: 40 }}>
+          <Text
+            style={{
+              marginTop: 40,
+              marginHorizontal: 40,
+              color: colors.primaryText,
+              fontFamily: typography.ROBOTO_400,
+            }}
+          >
             To get started, connect with your Discogs account!
           </Text>
-          <Text style={{ marginBottom: 40, marginHorizontal: 40 }}>
+          <Text
+            style={{
+              marginBottom: 40,
+              marginHorizontal: 40,
+              color: colors.primaryText,
+              fontFamily: typography.ROBOTO_400,
+            }}
+          >
             Continue without connecting
           </Text>
         </View>
@@ -58,26 +72,26 @@ const Home = () => {
         This is the Home tab
       </Text> */}
       {/* ////////////// */}
-      {/* <View style={{ flexDirection: 'row' }}>
+      {/*
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_100 }]}>
-          <Text style={styles.boxText}>100</Text>
+          <Text style={styles.boxText}>1</Text>
         </View>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_300 }]}>
-          <Text style={styles.boxText}>300</Text>
+          <Text style={styles.boxText}>2</Text>
         </View>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_500 }]}>
-          <Text style={styles.boxText}>500</Text>
+          <Text style={styles.boxText}>3</Text>
         </View>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_700 }]}>
-          <Text style={styles.boxText}>700</Text>
+          <Text style={styles.boxText}>4</Text>
         </View>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_800 }]}>
-          <Text style={styles.boxText}>800</Text>
+          <Text style={styles.boxText}>5</Text>
         </View>
         <View style={[styles.colorBox, { backgroundColor: palette.GREY_900 }]}>
-          <Text style={styles.boxText}>900</Text>
+          <Text style={styles.boxText}>6</Text>
         </View>
-      </View> */}
+       */}
       {/* ///////////////////////////////////// */}
     </View>
   );

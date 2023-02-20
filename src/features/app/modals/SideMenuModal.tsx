@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import { useBoundStore } from '../../../store';
+import Divider from '../components/Divider';
 
 const { spacing, typography, palette } = globalStyles;
 
@@ -36,20 +37,16 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
           <Text style={[styles.headingText, { color: colors.primaryText }]}>
             Collected
           </Text>
-          <View
-            style={{
-              borderBottomColor: palette.RED_ORANGE,
-              borderBottomWidth: 1,
-              // marginHorizontal: spacing.M,
-              width: '100%',
-              paddingTop: spacing.STANDARD_EDGE,
-            }}
+          <Divider
+            color={colors.primary}
+            widthPercentage={'92%'}
+            style={{ paddingTop: spacing.L }}
           />
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.toggleContainer}>
             <Text style={[styles.optionText, { color: colors.primaryText }]}>
-              DARK MODE
+              Dark mode
             </Text>
             <Switch
               value={isDarkTheme}
@@ -59,10 +56,8 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
               circleBorderWidth={0.5}
               renderActiveText={false}
               renderInActiveText={false}
-              backgroundActive={'#595959'}
-              circleActiveColor={palette.RED_ORANGE}
-              // switchLeftPx={2}
-              // switchRightPx={2}
+              backgroundActive={palette.RED_ORANGE_DARK}
+              circleActiveColor={palette.OFF_WHITE}
             />
           </View>
         </View>
@@ -96,6 +91,7 @@ const styles = StyleSheet.create({
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,
     fontSize: 26,
+    marginTop: spacing.M,
   },
   bodyContainer: {
     flex: 1,
@@ -110,7 +106,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   optionText: {
-    fontFamily: typography.INTER_900,
+    fontFamily: typography.ROBOTO_400,
+    fontSize: 18,
+    letterSpacing: 2,
   },
 });
 

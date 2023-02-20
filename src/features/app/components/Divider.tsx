@@ -1,16 +1,28 @@
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
+import palette from '../../../styles/palette';
 
-const Divider = ({ color, style }: DividerProps) => {
+const Divider = ({
+  color = palette.GREY_500,
+  widthPercentage = '90%',
+  style,
+}: DividerProps) => {
   return (
     <View
-      style={{ borderBottomColor: color, borderBottomWidth: 1, ...style }}
+      style={{
+        width: widthPercentage,
+        borderBottomColor: color,
+        borderBottomWidth: 1,
+        alignSelf: 'center',
+        ...style,
+      }}
     />
   );
 };
 
 type DividerProps = {
   color?: string;
+  widthPercentage?: string;
   style?: ViewStyle | ViewStyle[];
 };
 

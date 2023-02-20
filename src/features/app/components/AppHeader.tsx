@@ -4,9 +4,9 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import HamburgerMenu from '../../../../assets/icons/hamburgerMenu.svg';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
-import palette from '../../../styles/palette';
 import SideMenuModal from '../modals/SideMenuModal';
 import LogoC from '../../../../assets/logoC.svg';
+import Divider from './Divider';
 
 const { typography, spacing } = globalStyles;
 
@@ -39,7 +39,7 @@ const AppHeader = () => {
           setModalIsActive={setModalIsActive}
         />
       </View>
-      <View style={styles.divider} />
+      <Divider widthPercentage="92%" color={colors.primary} />
     </>
   );
 };
@@ -47,7 +47,8 @@ const AppHeader = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: spacing.STANDARD_EDGE,
-    paddingVertical: spacing.STANDARD_EDGE,
+    paddingBottom: spacing.L,
+    paddingTop: spacing.L,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -59,11 +60,6 @@ const styles = StyleSheet.create({
   menuButton: {
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  divider: {
-    marginHorizontal: spacing.XL,
-    borderBottomColor: palette.RED_ORANGE,
-    borderBottomWidth: 1,
   },
 });
 
