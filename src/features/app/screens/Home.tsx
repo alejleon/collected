@@ -99,10 +99,11 @@ const styles = StyleSheet.create({
   connectContainer: {
     height: 400,
     width: 350,
+    marginBottom: 72,
     // paddingTop: 16,
     // paddingHorizontal: '10%',
-    borderColor: 'blue',
-    borderWidth: 2,
+    // borderColor: 'blue',
+    // borderWidth: 2,
     // alignItems: 'flex-end',
   },
   colorBox: {

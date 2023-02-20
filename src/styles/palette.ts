@@ -1,7 +1,16 @@
 const palette: Palette = {
   RED_ORANGE: '#C73804',
-  YELLOW: '#FCBA03',
-  BLUE: '#42A4F5',
+  RED_ORANGE_DARK: '#e8541e', // secondary orange for dark mode
+  YELLOW: '#FCBA03', // good for dark mode
+  // ffc800
+  // ffe066
+  // f4d35e
+  // ffe19c
+  BLUE: '#42A4F5', // possibly good for dark mode
+  // 247ba0
+  // 0b4f6c
+  // 3c6e71
+  // 4da1a9
 
   WHITE: '#FFFFFF',
   OFF_WHITE: '#F5F5F5',
@@ -16,9 +25,11 @@ const palette: Palette = {
   GREY_900: '#17191c',
   BLACK: '#000000',
 };
+// #c45127
 
 type Palette = {
   RED_ORANGE: string;
+  RED_ORANGE_DARK: string;
   YELLOW: string;
   BLUE: string;
 

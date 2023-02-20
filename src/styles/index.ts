@@ -10,11 +10,12 @@ export const globalStyles = {
 
 export const lightTheme = {
   colors: {
+    primaryText: palette.GREY_900,
+    secondaryText: palette.GREY_600,
+    primary: palette.RED_ORANGE,
     background: palette.OFF_WHITE,
     banner: palette.GREY_200,
     card: palette.GREY_200,
-    primaryText: palette.GREY_900,
-    secondaryText: palette.GREY_600,
     divider: 'red',
     // secondary: palette.GREY_300,
     // surface: '#FFFFFF',
@@ -45,11 +46,12 @@ export const lightTheme = {
 export const darkTheme = {
   ...lightTheme,
   colors: {
+    primaryText: palette.OFF_WHITE,
+    secondaryText: palette.GREY_700,
+    primary: palette.RED_ORANGE_DARK,
     background: palette.GREY_900,
     banner: palette.GREY_800,
     card: palette.GREY_800,
-    primaryText: palette.OFF_WHITE,
-    secondaryText: palette.GREY_700,
     divider: 'red',
   },
 };
