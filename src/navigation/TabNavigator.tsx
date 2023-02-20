@@ -7,17 +7,20 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="Home" sceneContainerStyle={{}}>
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+      sceneContainerStyle={{}}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          title: 'Home YAHH',
-          tabBarLabel: 'Home oooof',
-          headerShown: false,
+          title: 'Home',
+          tabBarLabel: 'Home',
         }}
       />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Tools" component={Settings} />
     </Tab.Navigator>
   );
 };

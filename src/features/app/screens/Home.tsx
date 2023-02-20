@@ -17,8 +17,42 @@ const Home = () => {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <AppHeader />
       <View style={styles.content}>
-        <Text>To get started, connect with your Discogs account!</Text>
-        <Text>Continue without connecting</Text>
+        <View style={styles.connectContainer}>
+          <View
+            style={{
+              backgroundColor: palette.GREY_200,
+              height: '93%',
+              width: '93%',
+              alignSelf: 'flex-end',
+              justifyContent: 'center',
+              marginTop: '8%',
+              // paddingRight: '8%',
+              // paddingLeft: spacing.STANDARD_EDGE,
+              // paddingBottom: '8%',
+              borderRadius: 8,
+              position: 'absolute',
+            }}
+          />
+          <View
+            style={{
+              borderColor: palette.RED_ORANGE,
+              borderWidth: 1,
+              // flex: 1,
+              width: '93%',
+              height: '93%',
+              // marginBottom: 16,
+              // marginRight: 16,
+              position: 'absolute',
+              borderRadius: 8,
+            }}
+          />
+          <Text style={{ marginTop: 40, marginHorizontal: 40 }}>
+            To get started, connect with your Discogs account!
+          </Text>
+          <Text style={{ marginBottom: 40, marginHorizontal: 40 }}>
+            Continue without connecting
+          </Text>
+        </View>
       </View>
       {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
@@ -54,8 +88,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
+    flex: 1,
     paddingHorizontal: spacing.STANDARD_EDGE,
-    marginTop: spacing.XL,
+    // marginTop: spacing.XL,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // borderColor: 'red',
+    // borderWidth: 2,
+  },
+  connectContainer: {
+    height: 400,
+    width: 350,
+    // paddingTop: 16,
+    // paddingHorizontal: '10%',
+    borderColor: 'blue',
+    borderWidth: 2,
+    // alignItems: 'flex-end',
   },
   colorBox: {
     height: 60,
