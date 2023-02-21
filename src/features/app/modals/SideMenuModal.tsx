@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { Text, View, Pressable, StyleSheet, DevSettings } from 'react-native';
 import { Switch } from 'react-native-switch';
 import Modal from 'react-native-modal';
 import useTheme from '../../../hooks/useTheme';
@@ -26,15 +26,13 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
       style={styles.modalContainer}
     >
       <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: colors.background,
-          },
-        ]}
+        style={{
+          ...styles.container,
+          backgroundColor: colors.background,
+        }}
       >
-        <View style={[styles.headingContainer]}>
-          <Text style={[styles.headingText, { color: colors.primaryText }]}>
+        <View style={styles.headingContainer}>
+          <Text style={{ ...styles.headingText, color: colors.primaryText }}>
             Collected
           </Text>
           <Divider
@@ -45,7 +43,7 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.toggleContainer}>
-            <Text style={[styles.optionText, { color: colors.primaryText }]}>
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
               Dark mode
             </Text>
             <Switch
@@ -60,6 +58,18 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
               circleActiveColor={palette.OFF_WHITE}
             />
           </View>
+
+          <Pressable
+            style={styles.optionContainer}
+            onPress={() => {
+              DevSettings.reload();
+              setModalIsActive(false);
+            }}
+          >
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
+              Reload Javascript
+            </Text>
+          </Pressable>
         </View>
       </View>
     </Modal>
@@ -96,14 +106,17 @@ const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
     paddingTop: spacing.L,
-    // borderColor: 'red',
-    // borderWidth: 2,
     paddingHorizontal: spacing.STANDARD_EDGE,
   },
   toggleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  optionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.L,
   },
   optionText: {
     fontFamily: typography.ROBOTO_400,

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 
-const { spacing, typography, palette } = globalStyles;
+const { spacing, typography } = globalStyles;
 
 const Home = () => {
   const { isDarkTheme } = useBoundStore((state) => state);
@@ -14,7 +14,7 @@ const Home = () => {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <View style={{ ...styles.container, backgroundColor: colors.background }}>
       <AppHeader />
       <View style={styles.content}>
         <View style={styles.connectContainer}>
@@ -104,28 +104,18 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: spacing.STANDARD_EDGE,
-    // marginTop: spacing.XL,
     justifyContent: 'center',
     alignItems: 'center',
-    // borderColor: 'red',
-    // borderWidth: 2,
   },
   connectContainer: {
     height: 400,
     width: 350,
     marginBottom: 72,
-    // paddingTop: 16,
-    // paddingHorizontal: '10%',
-    // borderColor: 'blue',
-    // borderWidth: 2,
-    // alignItems: 'flex-end',
   },
   colorBox: {
     height: 60,
     width: 65,
     backgroundColor: '#121212',
-    // marginLeft: 8,
-    // marginBottom: 16,
     alignItems: 'center',
     justifyContent: 'center',
   },

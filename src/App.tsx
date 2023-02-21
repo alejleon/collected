@@ -15,12 +15,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={[styles.container]}>
+      <SafeAreaView style={styles.container}>
         <StatusBar
           style={isDarkTheme ? 'light' : 'dark'}
           animated={true}
           translucent={true}
-          backgroundColor={isDarkTheme ? palette.GREY_800 : palette.OFF_WHITE}
+          backgroundColor={isDarkTheme ? palette.GREY_900 : palette.OFF_WHITE}
         />
         <LoadingScreen />
         <StackNavigator />

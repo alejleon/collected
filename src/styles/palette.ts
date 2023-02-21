@@ -1,6 +1,6 @@
 const palette: Palette = {
   RED_ORANGE: '#C73804',
-  RED_ORANGE_DARK: '#e8541e', // secondary orange for dark mode
+  RED_ORANGE_DARK: '#E8541E', // secondary orange for dark mode
   YELLOW: '#FCBA03', // good for dark mode
   // ffc800
   // ffe066
@@ -16,13 +16,13 @@ const palette: Palette = {
   OFF_WHITE: '#F5F5F5',
   GREY_100: '#E4E7EB',
   GREY_200: '#CBD2D9',
-  GREY_300: '#9ea7b0',
-  GREY_400: '#7e858c',
+  GREY_300: '#9EA7B0',
+  GREY_400: '#7E858C',
   GREY_500: '#606973',
-  GREY_600: '#4a5259',
-  GREY_700: '#3a424a',
-  GREY_800: '#23272b',
-  GREY_900: '#17191c',
+  GREY_600: '#4A5259',
+  GREY_700: '#3A424A',
+  GREY_800: '#23272B',
+  GREY_900: '#17191C',
   BLACK: '#000000',
 };
 // #c45127

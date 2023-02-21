@@ -17,7 +17,7 @@ const AppHeader = () => {
 
   return (
     <>
-      <View style={[styles.container, {}]}>
+      <View style={styles.container}>
         <View style={{ width: 30 }} />
         <LogoC
           height={36}
@@ -25,7 +25,7 @@ const AppHeader = () => {
           fill={colors.primaryText}
           style={{ marginRight: -34, marginBottom: 3 }}
         />
-        <Text style={[styles.heading, { color: colors.primaryText }]}>
+        <Text style={{ ...styles.heading, color: colors.primaryText }}>
           OLLECTED
         </Text>
         <Pressable

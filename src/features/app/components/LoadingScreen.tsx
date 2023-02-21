@@ -14,9 +14,9 @@ import {
 
 const LoadingScreen = () => {
   const [fontsLoaded] = useFonts({
+    RubikMonoOne_400Regular,
     Inter_900Black,
     PressStart2P_400Regular,
-    RubikMonoOne_400Regular,
     Roboto_300Light,
     Roboto_400Regular,
     Roboto_500Medium,
