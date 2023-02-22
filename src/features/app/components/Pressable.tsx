@@ -1,25 +1,49 @@
 import React from 'react';
 import { Pressable as RNPressable, PressableProps } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
-const Pressable = ({
+const Pressable: React.FC<Props> = ({
+  opacityActive = 0.5,
+  opacityInactive = 1,
   children,
-  style,
-  // activeOpacity,
   ...otherProps
-}: PressableProps) => {
-  // const _style: StyleProp<ViewStyle> = useCallback(
-  //   ({ pressed }: { pressed: boolean }) => [
-  //     { opacity: pressed ? activeOpacity : 1 },
-  //     style && style,
-  //   ],
-  //   [style]
-  // );
+}) => {
+  const opacity = useSharedValue(opacityInactive);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    };
+  });
+
+  const handlePressIn = () => {
+    opacity.value = withTiming(opacityActive, { duration: 100 });
+  };
+
+  const handlePressOut = () => {
+    opacity.value = withTiming(opacityInactive, { duration: 100 });
+  };
 
   return (
-    <RNPressable style={style} {...otherProps}>
-      {children}
-    </RNPressable>
+    <Animated.View style={animatedStyle}>
+      <RNPressable
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        {...otherProps}
+      >
+        {children}
+      </RNPressable>
+    </Animated.View>
   );
 };
+
+interface Props extends PressableProps {
+  opacityActive?: number;
+  opacityInactive?: number;
+}
 
 export default Pressable;

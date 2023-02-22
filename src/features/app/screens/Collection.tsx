@@ -4,6 +4,7 @@ import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
+import Pressable from '../components/Pressable';
 
 const { spacing, typography } = globalStyles;
 
@@ -68,6 +69,9 @@ const Home = () => {
           </Text>
         </View>
       </View>
+      <Pressable style={{ height: 100, width: 100, backgroundColor: 'red' }}>
+        <Text>hi there. tee hee hee</Text>
+      </Pressable>
       {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text> */}

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import useTheme from '../../../hooks/useTheme';
 import AppHeader from '../components/AppHeader';
 
-const Tools = () => {
+const Tools: React.FC = () => {
   const { colors } = useTheme();
 
   return (
