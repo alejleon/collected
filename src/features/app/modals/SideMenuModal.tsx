@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingHorizontal: spacing.STANDARD_EDGE,
-    paddingTop: spacing.STANDARD_EDGE,
+    paddingTop: spacing.M,
   },
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,

@@ -34,8 +34,14 @@ export const lightTheme = {
       letterSpacing: 0.15,
     },
     body: {
-      fontFamily: 'PressStart2P_400Regular',
+      fontFamily: typography.ROBOTO_400,
       fontSize: 16,
+    },
+    button: {
+      fontFamily: typography.ROBOTO_500,
+      fontSize: 14,
+      lineHeight: 16,
+      letterSpacing: 1.25,
     },
   },
   spacing: spacing,

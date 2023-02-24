@@ -21,11 +21,11 @@ const Pressable: React.FC<Props> = ({
   });
 
   const handlePressIn = () => {
-    opacity.value = withTiming(opacityActive, { duration: 100 });
+    opacity.value = withTiming(opacityActive, { duration: 0 });
   };
 
   const handlePressOut = () => {
-    opacity.value = withTiming(opacityInactive, { duration: 100 });
+    opacity.value = withTiming(opacityInactive, { duration: 35 });
   };
 
   return (
