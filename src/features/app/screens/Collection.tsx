@@ -1,26 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import Pressable from '../components/Pressable';
-import DiscogsAuth from '../../discogsConnect/DiscogsAuth';
+import DiscogsAuth from '../../discogsAuth/DiscogsAuth';
 
 const { spacing, typography } = globalStyles;
 
 const Home = () => {
-  const { isDarkTheme } = useBoundStore((state) => state);
+  const { isDarkTheme, userIsAuthenticated, toggleUserIsAuthenticated } =
+    useBoundStore((state) => state);
 
-  console.log('isDarkTheme', isDarkTheme);
+  console.log(
+    'isDarkTheme',
+    isDarkTheme,
+    'userAunthticated???',
+    userIsAuthenticated
+  );
   const { colors, textVariants } = useTheme();
 
   return (
     <View style={{ ...styles.container, backgroundColor: colors.background }}>
       <AppHeader />
       <View style={styles.content}>
-        <DiscogsAuth />
+        {userIsAuthenticated ? null : <DiscogsAuth />}
       </View>
+      <Button title="yehaaw" onPress={toggleUserIsAuthenticated} />
       {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text> */}
