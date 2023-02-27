@@ -21,19 +21,21 @@ const TabNavigator = () => {
         tabBarActiveTintColor: colors.primary,
         tabBarStyle: {
           ...styles.tabBarStyle,
-          backgroundColor: colors.background,
+          // borderTopWidth: isDarkTheme ? 2 : 1,
+          borderTopColor: isDarkTheme ? 'transparent' : 'rgba(0,0,0,0.1)',
+          backgroundColor: colors.backgroundAlt,
         },
         tabBarLabelPosition: 'below-icon',
-        tabBarBackground: () => {
-          return (
-            <Shadow
-              sides={{ top: true, bottom: false, start: false, end: false }}
-              startColor={isDarkTheme ? '#05050520' : '#E4E7EB'}
-              endColor={isDarkTheme ? '#17191c' : '#F5F5F5'}
-              distance={isDarkTheme ? 15 : 5}
-            />
-          );
-        },
+        // tabBarBackground: () => {
+        //   return (
+        //     <Shadow
+        //       sides={{ top: true, bottom: false, start: false, end: false }}
+        //       startColor={isDarkTheme ? '#05050520' : '#E4E7EB'}
+        //       endColor={isDarkTheme ? '#17191c' : '#F5F5F5'}
+        //       distance={isDarkTheme ? 15 : 5}
+        //     />
+        //   );
+        // },
       }}
     >
       <Tab.Screen
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     height: 70,
     paddingBottom: 16,
-    borderTopColor: 'transparent',
+    // borderTopColor: 'transparent',
   },
 });
 

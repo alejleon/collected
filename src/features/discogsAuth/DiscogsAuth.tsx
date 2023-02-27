@@ -10,8 +10,10 @@ const DiscogsAuth = () => {
 
   return (
     <>
-      <View style={{ ...styles.container }}>
-        <Text>Hi there</Text>
+      <View style={{ ...styles.container, backgroundColor: colors.card }}>
+        <Text style={{ ...textVariants.body, color: colors.primaryText }}>
+          Hi there
+        </Text>
       </View>
     </>
   );
@@ -22,12 +24,13 @@ const styles = StyleSheet.create({
     width: spacing.STANDARD_EDGE_PCNT,
     height: '50%',
     borderColor: palette.YELLOW,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.XXXL,
   },
+  text: {},
 });
 
 export default DiscogsAuth;
