@@ -13,12 +13,12 @@ const Home = () => {
   const { isDarkTheme, userIsAuthenticated, toggleUserIsAuthenticated } =
     useBoundStore((state) => state);
 
-  console.log(
-    'isDarkTheme',
-    isDarkTheme,
-    'userAunthticated???',
-    userIsAuthenticated
-  );
+  // console.log(
+  //   'isDarkTheme',
+  //   isDarkTheme,
+  //   'userAunthticated???',
+  //   userIsAuthenticated
+  // );
   const { colors, textVariants } = useTheme();
 
   return (

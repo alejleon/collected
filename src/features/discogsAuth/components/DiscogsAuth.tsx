@@ -5,28 +5,16 @@ import { globalStyles } from '../../../styles';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
 import * as Linking from 'expo-linking';
-import axios from 'axios';
+import { DISCOGS_CONSUMER_KEY, DISCOGS_CONSUMER_SECRET } from '@env';
 
 WebBrowser.maybeCompleteAuthSession();
 const { spacing, palette } = globalStyles;
-
-const config = {
-  oauth: {
-    key: 'you',
-    secret: 'wish lol',
-    requestTokenUrl: 'https://api.discogs.com/oauth/request_token',
-    authorizeUrl: 'https://discogs.com/oauth/authorize',
-    accessTokenUrl: 'https://discogs.com/oauth/access_token',
-  },
-  appUserAgent: 'CollectedApp/1.0',
-  storageAppId: '@CollectedApp',
-  apiBaseUrl: 'https://api.discogs.com',
-};
 
 const getNonce = (date: Date): string => {
   return Math.round(date.getTime() * Math.random()).toString(16);
 };
 
+/////////////////// utils /////////////////
 const percentEncode = (str: string): string => {
   return encodeURIComponent(str)
     .replace(/!/g, '%21')
@@ -49,87 +37,51 @@ const getInitialHeaders = (): string => {
   ].join(', ');
 };
 
-const initialHeaders = getInitialHeaders();
-
-const AppHeaders = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  Accept: 'application/vnd.discogs.v2.plaintext+json',
-  Authorization: initialHeaders,
-  'User-Agent': config.appUserAgent,
+/////////////////// configs /////////////////
+const config = {
+  oauth: {
+    key: DISCOGS_CONSUMER_KEY,
+    secret: DISCOGS_CONSUMER_SECRET,
+    requestTokenUrl: 'https://api.discogs.com/oauth/request_token',
+    authorizeUrl: 'https://discogs.com/oauth/authorize',
+    accessTokenUrl: 'https://discogs.com/oauth/access_token',
+  },
+  appUserAgent: 'CollectedApp/1.0',
+  storageAppId: '@CollectedApp',
+  apiBaseUrl: 'https://api.discogs.com',
 };
 
-// console.log('INITIAL HEADERSSSs', getInitialHeaders());
+const appHeaders = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  Accept: 'application/vnd.discogs.v2.plaintext+json',
+  Authorization: getInitialHeaders(),
+  'User-Agent': 'Collected_App/1.0',
+};
 
+/////////////////// component /////////////////
 const DiscogsAuth = () => {
   const { colors, textVariants } = useTheme();
+  console.log('KEYYYYY', DISCOGS_CONSUMER_KEY, DISCOGS_CONSUMER_SECRET);
 
-  // const doTheThing = () => {
-  console.log('startinggg');
-  fetch('https://api.discogs.com/oauth/request_token', {
-    method: 'POST',
-  })
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+  const getRequestToken = async () => {
+    try {
+      const rawResult = await fetch(
+        'https://api.discogs.com/oauth/request_token',
+        {
+          method: 'GET',
+          headers: appHeaders,
+        }
+      );
 
-  // console.log('RESULTS', results);
-  // .then((response) => {
-  //   console.log('IN THE RESPONSE', response);
-  //   return response;
-  // })
-  // .then((data) => {
-  //   console.log('IN THE DATA', data);
-  // })
-  // .catch((error) => {
-  //   console.log('IN THE ERROR', error);
-  // });
+      const result = JSON.stringify(rawResult);
 
-  // console.log('RESULTSSSSSSSSSS', results);
+      console.log('RESULTTT RESULT!', JSON.parse(result));
+    } catch (e) {
+      console.log('ERROR ERROR', e);
+    }
+  };
 
-  // .then((response) => response.json())
-  // .then((data) => {
-  //   console.log('DATA RESULLTTSS', data);
-  // })
-  // .catch((error) => {
-  //   console.log('ERROR', error);
-  // });
-  // };
-
-  // const discogsLogin = async () => {
-  //   const result = await AuthSession.startAsync({
-  //     authUrl: `${requestTokenEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identity`,
-  //   });
-  //   console.log('RESULT', result);
-  // };
-
-  // const tokenRequest = {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //   },
-  //   body: `client_id=${clientId}$client_secret=${clientSecret}&grant_type=authorization_code&redirect_uri=${encodeURIComponent(
-  //     redirectUri
-  //   )}&code=${result.params.code}`,
-  // };
-
-  // const discovery = {
-  //   authorizationEndpoint: 'https://discogs.com/oauth/authorize',
-  //   tokenEndpoint: 'https://discogs.com/oauth/access_token',
-  // };
-
-  // const [request, response, promptAsync] = useAuthRequest(
-  //   {
-  //     clientId: 'tVHiUdPmpkstWSISYlFO',
-  //     clientSecret: '',
-  //     scopes: ['identity'],
-  //     redirectUri: makeRedirectUri({
-  //       scheme: 'collected',
-  //     }),
-  //     // oauthCallback: 'collected://',
-  //   },
-  //   discovery
-  // );
-
-  console.log('KEYYY', process.env.CONSUMER_SECRET, 'Dev?', __DEV__);
+  // console.log('KEYYY', process.env.CONSUMER_SECRET, 'Dev?', __DEV__);
 
   return (
     <>
@@ -137,7 +89,7 @@ const DiscogsAuth = () => {
         <Text style={{ ...textVariants.body, color: colors.primaryText }}>
           Hi there
         </Text>
-        <Button title={'Do the thing'} onPress={() => doTheThing()} />
+        <Button title={'Do the thing'} onPress={() => getRequestToken()} />
         {/* <Button title={'Sign in probs ionno'} onPress={() => discogsLogin()} /> */}
       </View>
     </>
@@ -154,8 +106,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.XXXL,
+    elevation: 5,
   },
   text: {},
 });
 
 export default DiscogsAuth;
+
+// const discovery = {
+//   authorizationEndpoint: 'https://discogs.com/oauth/authorize',
+//   tokenEndpoint: 'https://discogs.com/oauth/access_token',
+// };
+
+// const [request, response, promptAsync] = useAuthRequest(
+//   {
+//     clientId: 'tVHiUdPmpkstWSISYlFO',
+//     clientSecret: '',
+//     scopes: ['identity'],
+//     redirectUri: makeRedirectUri({
+//       scheme: 'collected',
+//     }),
+//     // oauthCallback: 'collected://',
+//   },
+//   discovery
+// );

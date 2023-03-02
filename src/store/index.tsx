@@ -24,7 +24,8 @@ export const useBoundStore = create<AppState & DiscogsAuthState>()(
           if (error) {
             console.log('Rehydration error', error);
           } else {
-            console.log('Hydration complete');
+            console.log('');
+            // console.log('Hydration complete');
           }
         };
       },

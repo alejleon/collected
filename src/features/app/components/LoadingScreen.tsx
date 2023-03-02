@@ -27,7 +27,7 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     if (fontsLoaded) {
-      console.log('fonts loaded');
+      // console.log('fonts loaded');
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       SplashScreen.hideAsync();
     }
