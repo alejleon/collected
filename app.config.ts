@@ -5,7 +5,6 @@ export default {
     originalFullName: '@alejleon/collected',
     version: '1.0.0',
     sdkVersion: '47.0.0',
-    jsEngine: 'hermes',
     orientation: 'portrait',
     icon: './assets/collectedIcon.png',
     userInterfaceStyle: 'light',
