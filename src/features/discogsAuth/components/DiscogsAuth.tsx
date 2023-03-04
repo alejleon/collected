@@ -23,9 +23,10 @@ const percentEncode = (str: string): string => {
     .replace(/\(/g, '%28')
     .replace(/\)/g, '%29');
 };
+const date = new Date();
 
 const getInitialHeaders = (): string => {
-  const date = new Date();
+  // const date = new Date();
 
   return [
     `OAuth oauth_consumer_key="${config.oauth.key}"`,
@@ -33,9 +34,11 @@ const getInitialHeaders = (): string => {
     `oauth_signature="${percentEncode(config.oauth.secret)}&"`,
     'oauth_signature_method="PLAINTEXT"',
     `oauth_timestamp="${date.getTime()}"`,
-    `oauth_callback="${Linking.createURL('')}"`,
+    `oauth_callback="${Linking.createURL('home')}"`,
   ].join(', ');
 };
+
+// console.log('LINK EXAMPLE', Linking.createURL('home'));
 
 /////////////////// configs /////////////////
 const config = {
@@ -55,27 +58,36 @@ const appHeaders = {
   'Content-Type': 'application/x-www-form-urlencoded',
   Accept: 'application/vnd.discogs.v2.plaintext+json',
   Authorization: getInitialHeaders(),
-  'User-Agent': 'Collected_App/1.0',
+  'User-Agent': 'CollectedApp/1.0',
 };
+
+// console.log('APP HEADERS', appHeaders);
 
 /////////////////// component /////////////////
 const DiscogsAuth = () => {
   const { colors, textVariants } = useTheme();
-  console.log('KEYYYYY', DISCOGS_CONSUMER_KEY, DISCOGS_CONSUMER_SECRET);
+  // console.log('KEYYYYY', DISCOGS_CONSUMER_KEY, DISCOGS_CONSUMER_SECRET);
 
   const getRequestToken = async () => {
     try {
-      const rawResult = await fetch(
+      const response = await fetch(
         'https://api.discogs.com/oauth/request_token',
         {
           method: 'GET',
-          headers: appHeaders,
+          headers: {
+            Accept: 'application/vnd.discogs.v2.plaintext+json',
+            Authorization:
+              'OAuth oauth_consumer_key="tVHiUdPmpkstWSISYlFO", oauth_nonce="418c510c77", oauth_signature="CjNwqtPupNjHPChDYenwgelAtEvgunvO&", oauth_signature_method="PLAINTEXT", oauth_timestamp="1677821022253", oauth_callback="collected://home"',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'User-Agent': 'CollectedApp/1.0',
+          },
         }
       );
 
-      const result = JSON.stringify(rawResult);
+      const json = await response.text();
+      // const objectified = JSON.stringify(response);
 
-      console.log('RESULTTT RESULT!', JSON.parse(result));
+      console.log('RESULT: ', json);
     } catch (e) {
       console.log('ERROR ERROR', e);
     }

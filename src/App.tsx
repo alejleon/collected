@@ -7,6 +7,7 @@ import StackNavigator from './navigation/StackNavigator';
 import LoadingScreen from './features/app/components/LoadingScreen';
 import { useBoundStore } from './store';
 import { globalStyles } from './styles';
+import EventListeners from './features/app/components/EventListeners';
 
 const { palette } = globalStyles;
 
@@ -24,6 +25,7 @@ export default function App() {
         />
         <LoadingScreen />
         <StackNavigator />
+        <EventListeners />
       </SafeAreaView>
     </NavigationContainer>
   );
