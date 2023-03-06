@@ -5,7 +5,7 @@ import { useBoundStore } from '../../../store';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import Pressable from '../components/Pressable';
-import DiscogsAuth from '../../discogsAuth/components/DiscogsAuth';
+import DiscogsAuth from '../../discogsAuth/DiscogsAuth';
 
 const { spacing, typography } = globalStyles;
 
