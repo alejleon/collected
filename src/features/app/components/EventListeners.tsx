@@ -1,14 +1,24 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import * as Linking from 'expo-linking';
+import { useBoundStore } from '../../../store';
 
 const EventListeners: React.FC = () => {
-  const url = Linking.useURL();
-  console.log('URL AND STUFFFF', url);
+  const { setOauthVerifier } = useBoundStore((state) => state);
 
-  // console.log('BEFORE THE THING');
   Linking.addEventListener('url', (event: Linking.EventType) => {
-    console.log('url event JUST TRIGGERED', event, '\n');
+    const { hostname, path, queryParams } = Linking.parse(event.url);
+
+    switch (hostname) {
+      case 'discogs_auth':
+        if (queryParams && queryParams.oauth_verifier) {
+          setOauthVerifier(queryParams.oauth_verifier as string);
+        }
+        break;
+      default:
+        console.log("Collected can't handle this link...");
+        break;
+    }
   });
 
   return <View />;
