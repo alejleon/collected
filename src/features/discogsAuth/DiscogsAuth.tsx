@@ -1,33 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Linking } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import { globalStyles } from '../../styles';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
 import { getRequestToken } from './utils';
+import oauthConfig from './oauthConfig';
+import { useBoundStore } from '../../store';
 
 WebBrowser.maybeCompleteAuthSession();
 const { spacing, palette } = globalStyles;
 
 const DiscogsAuth = () => {
-  const [oauthToken, setOauthToken] = useState('');
-  const [oauthTokenSecret, setOauthTokenSecret] = useState('');
   const { colors, textVariants } = useTheme();
+  const {
+    oauthToken,
+    oauthTokenSecret,
+    oauthVerifier,
+    setOauthToken,
+    setOauthTokenSecret,
+  } = useBoundStore((state) => state);
+  const discovery = {
+    authorizationEndpoint: oauthConfig.authorizeUrl,
+    tokenEndpoint: oauthConfig.accessTokenUrl,
+  };
 
   useEffect(() => {
-    const extractData = async () => {
+    const extractTokenData = async () => {
       try {
         const requestData = await getRequestToken();
-        console.log('oauthToken', oauthToken);
         if (requestData) {
           setOauthToken(requestData.oauthToken);
+          setOauthTokenSecret(requestData.oauthTokenSecret);
         }
       } catch (e) {
         console.log('There was an error fetching request token', e);
       }
     };
-    void extractData();
+    void extractTokenData();
   }, []);
+
+  const [request, response, promptAsync] = AuthSession.useAuthRequest(
+    {
+      clientId: oauthConfig.consumerKey,
+      scopes: ['identity'],
+      redirectUri: oauthConfig.redirectUrl,
+      extraParams: {
+        oauth_token: oauthToken,
+      },
+    },
+    discovery
+  );
+
+  // console.log('REQUEST', request, '\n', 'RESPONSE', response);
+
+  // console.log('VERIFIER', response?.params);
 
   return (
     <>
@@ -35,7 +62,7 @@ const DiscogsAuth = () => {
         <Text style={{ ...textVariants.body, color: colors.primaryText }}>
           Hi there
         </Text>
-        <Button title={'Do the thing'} onPress={() => {}} />
+        <Button title={'Do the thing'} onPress={() => promptAsync()} />
         {/* <Button title={'Sign in probs ionno'} onPress={() => discogsLogin()} /> */}
       </View>
     </>

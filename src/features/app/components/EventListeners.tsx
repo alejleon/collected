@@ -8,7 +8,6 @@ const EventListeners: React.FC = () => {
 
   // console.log('BEFORE THE THING');
   Linking.addEventListener('url', (event: Linking.EventType) => {
-    console.log('INSIDE THE EVENT LISTENER');
     console.log('url event JUST TRIGGERED', event, '\n');
   });
 

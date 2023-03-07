@@ -19,12 +19,12 @@ export const getAuthorizationHeaders = () => {
   const date = new Date();
 
   return [
-    `OAuth oauth_consumer_key="${oauthConfig.key}"`,
+    `OAuth oauth_consumer_key="${oauthConfig.consumerKey}"`,
     `oauth_nonce="${getNonce(date)}"`,
-    `oauth_signature="${percentEncode(oauthConfig.secret)}&"`,
+    `oauth_signature="${percentEncode(oauthConfig.consumerSecret)}&"`,
     'oauth_signature_method="PLAINTEXT"',
     `oauth_timestamp="${date.getTime()}"`,
-    `oauth_callback="${Linking.createURL('home')}"`,
+    `oauth_callback="${oauthConfig.redirectUrl}"`,
   ].join(', ');
 };
 
@@ -55,4 +55,22 @@ export const getRequestToken = async () => {
   } catch (e) {
     console.log('There was an error fetching request token', e);
   }
+};
+
+export const getSecureHeaders = (oAuthObject: {
+  oauth_token: string;
+  oauth_token_secret: string;
+}): string => {
+  const date = new Date();
+
+  return [
+    `OAuth oauth_consumer_key="${oauthConfig.consumerKey}"`,
+    `oauth_nonce="${getNonce(date)}"`,
+    `oauth_signature="${percentEncode(
+      `${oauthConfig.consumerSecret}&${oAuthObject.oauth_token_secret}`
+    )}"`,
+    'oauth_signature_method="PLAINTEXT"',
+    `oauth_timestamp="${date.getTime()}"`,
+    `oauth_token="${oAuthObject.oauth_token}"`,
+  ].join(', ');
 };
