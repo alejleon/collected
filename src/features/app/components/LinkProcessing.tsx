@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import * as Linking from 'expo-linking';
 import { useBoundStore } from '../../../store';
 
-const EventListeners: React.FC = () => {
+const LinkProcessing: React.FC = () => {
   const { setOauthVerifier } = useBoundStore((state) => state);
 
   Linking.addEventListener('url', (event: Linking.EventType) => {
@@ -24,4 +24,4 @@ const EventListeners: React.FC = () => {
   return <View />;
 };
 
-export default EventListeners;
+export default LinkProcessing;

@@ -28,14 +28,40 @@ export const getAuthorizationHeaders = () => {
   ].join(', ');
 };
 
+const getAppHeaders = (headersFunc: () => string) => {
+  const headers = headersFunc();
+
+  return {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    Accept: 'application/vnd.discogs.v2.plaintext+json',
+    Authorization: headers,
+    'User-Agent': 'CollectedApp/1.0',
+  };
+};
+
+export const getAccessTokenHeaders = (oauthObject: {
+  oauthToken: string;
+  oauthTokenSecret: string;
+  oauthVerifier: string;
+}): string => {
+  const date = new Date();
+
+  return [
+    `OAuth oauth_consumer_key="${oauthConfig.consumerKey}"`,
+    `oauth_nonce="${getNonce(date)}"`,
+    `oauth_token="${oauthObject.oauthToken}"`,
+    `oauth_signature="${percentEncode(
+      `${oauthConfig.consumerSecret}&${oauthObject.oauthTokenSecret}`
+    )}"`,
+    'oauth_signature_method="PLAINTEXT"',
+    `oauth_timestamp="${date.getTime()}"`,
+    `oauth_verifier="${oauthObject.oauthVerifier}"`,
+  ].join(', ');
+};
+
 export const getRequestToken = async () => {
   try {
-    const requestHeaders = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Accept: 'application/vnd.discogs.v2.plaintext+json',
-      Authorization: getAuthorizationHeaders(),
-      'User-Agent': 'CollectedApp/1.0',
-    };
+    const requestHeaders = getAppHeaders(getAuthorizationHeaders);
 
     const response = await fetch(
       'https://api.discogs.com/oauth/request_token',
@@ -57,20 +83,20 @@ export const getRequestToken = async () => {
   }
 };
 
-export const getSecureHeaders = (oAuthObject: {
-  oauth_token: string;
-  oauth_token_secret: string;
-}): string => {
-  const date = new Date();
+export const getAccessToken = async () => {
+  try {
+    const requestHeaders = getAppHeaders(getAccessTokenHeaders); // need to pass in oauthObject in here
 
-  return [
-    `OAuth oauth_consumer_key="${oauthConfig.consumerKey}"`,
-    `oauth_nonce="${getNonce(date)}"`,
-    `oauth_signature="${percentEncode(
-      `${oauthConfig.consumerSecret}&${oAuthObject.oauth_token_secret}`
-    )}"`,
-    'oauth_signature_method="PLAINTEXT"',
-    `oauth_timestamp="${date.getTime()}"`,
-    `oauth_token="${oAuthObject.oauth_token}"`,
-  ].join(', ');
+    console.log('REQUEST HEADERS', requestHeaders);
+    // const response = await fetch('https://api.discogs.com/oauth/access_token', {
+    //   method: 'POST',
+    //   headers: requestHeaders,
+    // });
+
+    // const text = await response.text();
+
+    // console.log('RESPONSE', text);
+  } catch (e) {
+    console.log('There was an error fetching access token', e);
+  }
 };

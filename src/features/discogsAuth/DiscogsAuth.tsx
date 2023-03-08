@@ -4,7 +4,7 @@ import useTheme from '../../hooks/useTheme';
 import { globalStyles } from '../../styles';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
-import { getRequestToken } from './utils';
+import { getRequestToken, getAccessToken } from './utils';
 import oauthConfig from './oauthConfig';
 import { useBoundStore } from '../../store';
 
@@ -40,7 +40,7 @@ const DiscogsAuth = () => {
     void extractTokenData();
   }, []);
 
-  const [request, response, promptAsync] = AuthSession.useAuthRequest(
+  const [, , promptAsync] = AuthSession.useAuthRequest(
     {
       clientId: oauthConfig.consumerKey,
       scopes: ['identity'],
@@ -52,9 +52,15 @@ const DiscogsAuth = () => {
     discovery
   );
 
+  useEffect(() => {
+    if (oauthVerifier) {
+      getAccessToken();
+    }
+  }, [oauthVerifier]);
+
   // console.log('REQUEST', request, '\n', 'RESPONSE', response);
 
-  // console.log('VERIFIER', response?.params);
+  console.log('VERIFIER', oauthVerifier);
 
   return (
     <>
