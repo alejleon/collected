@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Linking } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import { globalStyles } from '../../styles';
 import * as WebBrowser from 'expo-web-browser';
@@ -19,6 +19,8 @@ const DiscogsAuth = () => {
     oauthVerifier,
     setOauthToken,
     setOauthTokenSecret,
+    setOauthAccessToken,
+    setOauthAccessTokenSecret,
   } = useBoundStore((state) => state);
   const discovery = {
     authorizationEndpoint: oauthConfig.authorizeUrl,
@@ -37,6 +39,7 @@ const DiscogsAuth = () => {
         console.log('There was an error fetching request token', e);
       }
     };
+
     void extractTokenData();
   }, []);
 
@@ -54,7 +57,24 @@ const DiscogsAuth = () => {
 
   useEffect(() => {
     if (oauthVerifier) {
-      getAccessToken();
+      const extractAccessTokenData = async () => {
+        try {
+          const tokenData = await getAccessToken({
+            oauthToken,
+            oauthTokenSecret,
+            oauthVerifier,
+          });
+
+          if (tokenData) {
+            setOauthAccessToken(tokenData.oauthAccessToken);
+            setOauthAccessTokenSecret(tokenData.oauthAccessTokenSecret);
+          }
+        } catch (e) {
+          console.log('There was an error fetching access token', e);
+        }
+      };
+
+      void extractAccessTokenData();
     }
   }, [oauthVerifier]);
 
@@ -68,7 +88,7 @@ const DiscogsAuth = () => {
         <Text style={{ ...textVariants.body, color: colors.primaryText }}>
           Hi there
         </Text>
-        <Button title={'Do the thing'} onPress={() => promptAsync()} />
+        <Button title={'Do the thing'} onPress={() => void promptAsync()} />
         {/* <Button title={'Sign in probs ionno'} onPress={() => discogsLogin()} /> */}
       </View>
     </>

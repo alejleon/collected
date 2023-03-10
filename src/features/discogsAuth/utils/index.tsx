@@ -1,6 +1,7 @@
 import oauthConfig from '../oauthConfig';
 import * as Linking from 'expo-linking';
 import qs from 'query-string';
+import { AccessHeadersData } from '../types/discogsAuthTypes';
 
 const getNonce = (date: Date): string => {
   return Math.round(date.getTime() * Math.random()).toString(16);
@@ -28,8 +29,14 @@ export const getAuthorizationHeaders = () => {
   ].join(', ');
 };
 
-const getAppHeaders = (headersFunc: () => string) => {
-  const headers = headersFunc();
+const getAppHeaders = (accessHeadersData?: AccessHeadersData) => {
+  let headers = '';
+
+  if (accessHeadersData) {
+    headers = getAccessTokenHeaders(accessHeadersData);
+  } else {
+    headers = getAuthorizationHeaders();
+  }
 
   return {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -39,11 +46,9 @@ const getAppHeaders = (headersFunc: () => string) => {
   };
 };
 
-export const getAccessTokenHeaders = (oauthObject: {
-  oauthToken: string;
-  oauthTokenSecret: string;
-  oauthVerifier: string;
-}): string => {
+export const getAccessTokenHeaders = (
+  oauthObject: AccessHeadersData
+): string => {
   const date = new Date();
 
   return [
@@ -61,7 +66,7 @@ export const getAccessTokenHeaders = (oauthObject: {
 
 export const getRequestToken = async () => {
   try {
-    const requestHeaders = getAppHeaders(getAuthorizationHeaders);
+    const requestHeaders = getAppHeaders();
 
     const response = await fetch(
       'https://api.discogs.com/oauth/request_token',
@@ -83,19 +88,23 @@ export const getRequestToken = async () => {
   }
 };
 
-export const getAccessToken = async () => {
+export const getAccessToken = async (accessHeadersData: AccessHeadersData) => {
   try {
-    const requestHeaders = getAppHeaders(getAccessTokenHeaders); // need to pass in oauthObject in here
+    const requestHeaders = getAppHeaders(accessHeadersData); // need to pass in oauthObject in here
 
-    console.log('REQUEST HEADERS', requestHeaders);
-    // const response = await fetch('https://api.discogs.com/oauth/access_token', {
-    //   method: 'POST',
-    //   headers: requestHeaders,
-    // });
+    // console.log('REQUEST HEADERS', requestHeaders);
+    const response = await fetch('https://api.discogs.com/oauth/access_token', {
+      method: 'POST',
+      headers: requestHeaders,
+    });
 
-    // const text = await response.text();
+    const text = await response.text();
+    const params = qs.parse(text);
 
-    // console.log('RESPONSE', text);
+    return {
+      oauthAccessToken: params.oauth_token as string,
+      oauthAccessTokenSecret: params.oauth_token_secret as string,
+    };
   } catch (e) {
     console.log('There was an error fetching access token', e);
   }
