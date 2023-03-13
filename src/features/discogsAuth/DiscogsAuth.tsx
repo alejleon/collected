@@ -4,7 +4,7 @@ import useTheme from '../../hooks/useTheme';
 import { globalStyles } from '../../styles';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
-import { getRequestToken, getAccessToken } from './utils';
+import { getRequestToken, getAccessToken } from './queries';
 import oauthConfig from './oauthConfig';
 import { useBoundStore } from '../../store';
 
@@ -111,21 +111,3 @@ const styles = StyleSheet.create({
 });
 
 export default DiscogsAuth;
-
-// const discovery = {
-//   authorizationEndpoint: 'https://discogs.com/oauth/authorize',
-//   tokenEndpoint: 'https://discogs.com/oauth/access_token',
-// };
-
-// const [request, response, promptAsync] = useAuthRequest(
-//   {
-//     clientId: 'tVHiUdPmpkstWSISYlFO',
-//     clientSecret: '',
-//     scopes: ['identity'],
-//     redirectUri: makeRedirectUri({
-//       scheme: 'collected',
-//     }),
-//     // oauthCallback: 'collected://',
-//   },
-//   discovery
-// );
