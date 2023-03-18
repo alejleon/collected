@@ -58,7 +58,9 @@ export const getAccessTokenHeaders = (
     )}"`,
     'oauth_signature_method="PLAINTEXT"',
     `oauth_timestamp="${date.getTime()}"`,
-    `oauth_verifier="${oauthObject.oauthVerifier}"`,
+    oauthObject.oauthVerifier
+      ? `oauth_verifier="${oauthObject.oauthVerifier}"`
+      : '',
   ].join(', ');
 };
 

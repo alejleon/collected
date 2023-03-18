@@ -30,7 +30,6 @@ export const getAccessToken = async (accessHeadersData: AccessHeadersData) => {
   try {
     const requestHeaders = getAppHeaders(accessHeadersData); // need to pass in oauthObject in here
 
-    // console.log('REQUEST HEADERS', requestHeaders);
     const response = await fetch('https://api.discogs.com/oauth/access_token', {
       method: 'POST',
       headers: requestHeaders,
@@ -45,25 +44,5 @@ export const getAccessToken = async (accessHeadersData: AccessHeadersData) => {
     };
   } catch (e) {
     console.log('There was an error fetching access token', e);
-  }
-};
-
-export const getIdentity = async (accessHeadersData: AccessHeadersData) => {
-  try {
-    const requestHeaders = getAppHeaders(accessHeadersData);
-
-    const response = await fetch('https://api.discogs.com/oauth/identity', {
-      method: 'GET',
-      headers: requestHeaders,
-    });
-
-    const text = await response.text();
-    const params = qs.parse(text);
-
-    return {
-      username: params.username as string,
-    };
-  } catch (e) {
-    console.log('There was an error fetching identity', e);
   }
 };

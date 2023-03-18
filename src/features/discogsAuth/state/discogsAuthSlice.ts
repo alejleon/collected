@@ -18,9 +18,9 @@ const createDiscogsAuthSlice: StateCreator<
   setOauthToken: (token: string) => set({ oauthToken: token }),
   setOauthTokenSecret: (secret: string) => set({ oauthTokenSecret: secret }),
   setOauthVerifier: (verifier: string) => set({ oauthVerifier: verifier }),
-  setOauthAccessToken: (token: string) => set({ oauthToken: token }),
+  setOauthAccessToken: (token: string) => set({ oauthAccessToken: token }),
   setOauthAccessTokenSecret: (secret: string) =>
-    set({ oauthTokenSecret: secret }),
+    set({ oauthAccessTokenSecret: secret }),
 });
 
 export default createDiscogsAuthSlice;

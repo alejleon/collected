@@ -14,7 +14,13 @@ export type DiscogsAuthState = {
 };
 
 export type AccessHeadersData = {
+  // rename to AccessTokenHeadersData???
   oauthToken: string;
   oauthTokenSecret: string;
-  oauthVerifier: string;
+  oauthVerifier?: string;
+};
+
+export type AccessTokenData = {
+  oauthAccessToken: string;
+  oauthAccessTokenSecret: string;
 };

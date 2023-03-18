@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import { useBoundStore } from '../../../store';
@@ -6,12 +6,19 @@ import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import Pressable from '../components/Pressable';
 import DiscogsAuth from '../../discogsAuth/DiscogsAuth';
+import { getIdentity } from '../../../queries';
 
 const { spacing, typography } = globalStyles;
 
 const Home = () => {
-  const { isDarkTheme, userIsAuthenticated, toggleUserIsAuthenticated } =
-    useBoundStore((state) => state);
+  const {
+    isDarkTheme,
+    userIsAuthenticated,
+    oauthAccessToken,
+    oauthAccessTokenSecret,
+    oauthVerifier,
+    toggleUserIsAuthenticated,
+  } = useBoundStore((state) => state);
 
   // console.log(
   //   'isDarkTheme',
@@ -21,6 +28,10 @@ const Home = () => {
   // );
   const { colors, textVariants } = useTheme();
 
+  // useEffect(() => {
+  //   console.log('ACCESS TOKENS', oauthAccessToken, oauthAccessTokenSecret);
+  // }, [oauthAccessToken, oauthAccessTokenSecret]);
+
   return (
     <View style={{ ...styles.container, backgroundColor: colors.background }}>
       <AppHeader />
@@ -28,6 +39,16 @@ const Home = () => {
         {userIsAuthenticated ? null : <DiscogsAuth />}
       </View>
       <Button title="yehaaw" onPress={toggleUserIsAuthenticated} />
+      <Button
+        title="IDENTITY"
+        onPress={() =>
+          getIdentity({
+            oauthAccessToken,
+            oauthAccessTokenSecret,
+            oauthVerifier,
+          })
+        }
+      />
       {/* <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
         This is the Home tab
       </Text> */}

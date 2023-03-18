@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "lint": "eslint ./src",
     "format": "prettier --check ./src",
-    "devBuild:android": "eas build --profile development --platform android"
+    "devBuild:android": "eas build --profile development --platform android",
+    "devBuild:ios": "eas build --profile development --platform ios"
   },
   "dependencies": {
     "@expo-google-fonts/dev": "^0.2.2",
