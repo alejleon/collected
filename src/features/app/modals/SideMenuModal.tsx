@@ -1,16 +1,23 @@
 import React from 'react';
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { Text, View, Pressable, StyleSheet, DevSettings } from 'react-native';
 import { Switch } from 'react-native-switch';
 import Modal from 'react-native-modal';
 import useTheme from '../../../hooks/useTheme';
 import { globalStyles } from '../../../styles';
 import { useBoundStore } from '../../../store';
+import Divider from '../components/Divider';
 
 const { spacing, typography, palette } = globalStyles;
 
 const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
   const { colors } = useTheme();
-  const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
+  const {
+    isDarkTheme,
+    toggleAppTheme,
+    setOauthAccessToken,
+    setOauthAccessTokenSecret,
+    setOauthVerifier,
+  } = useBoundStore((state) => state);
 
   return (
     <Modal
@@ -25,31 +32,25 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
       style={styles.modalContainer}
     >
       <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: colors.background,
-          },
-        ]}
+        style={{
+          ...styles.container,
+          backgroundColor: colors.background,
+        }}
       >
-        <View style={[styles.headingContainer]}>
-          <Text style={[styles.headingText, { color: colors.primaryText }]}>
+        <View style={styles.headingContainer}>
+          <Text style={{ ...styles.headingText, color: colors.primaryText }}>
             Collected
           </Text>
-          <View
-            style={{
-              borderBottomColor: palette.RED_ORANGE,
-              borderBottomWidth: 1,
-              // marginHorizontal: spacing.M,
-              width: '100%',
-              paddingTop: spacing.STANDARD_EDGE,
-            }}
+          <Divider
+            color={colors.primary}
+            widthPercentage={'92%'}
+            style={{ paddingTop: spacing.L }}
           />
         </View>
         <View style={styles.bodyContainer}>
           <View style={styles.toggleContainer}>
-            <Text style={[styles.optionText, { color: colors.primaryText }]}>
-              DARK MODE
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
+              Dark mode
             </Text>
             <Switch
               value={isDarkTheme}
@@ -59,12 +60,35 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
               circleBorderWidth={0.5}
               renderActiveText={false}
               renderInActiveText={false}
-              backgroundActive={'#595959'}
-              circleActiveColor={palette.RED_ORANGE}
-              // switchLeftPx={2}
-              // switchRightPx={2}
+              backgroundActive={palette.RED_ORANGE_DARK}
+              circleActiveColor={palette.OFF_WHITE}
             />
           </View>
+
+          <Pressable
+            style={styles.optionContainer}
+            onPress={() => {
+              DevSettings.reload();
+              setModalIsActive(false);
+            }}
+          >
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
+              Reload Javascript
+            </Text>
+          </Pressable>
+          <Pressable
+            style={styles.optionContainer}
+            onPress={() => {
+              setOauthAccessToken('');
+              setOauthAccessTokenSecret('');
+              setOauthVerifier('');
+              setModalIsActive(false);
+            }}
+          >
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
+              Clear Async Storage
+            </Text>
+          </Pressable>
         </View>
       </View>
     </Modal>
@@ -91,17 +115,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingHorizontal: spacing.STANDARD_EDGE,
-    paddingTop: spacing.STANDARD_EDGE,
+    paddingTop: spacing.M,
   },
   headingText: {
     fontFamily: typography.RUBIKMONOONE_400,
     fontSize: 26,
+    marginTop: spacing.M,
   },
   bodyContainer: {
     flex: 1,
     paddingTop: spacing.L,
-    // borderColor: 'red',
-    // borderWidth: 2,
     paddingHorizontal: spacing.STANDARD_EDGE,
   },
   toggleContainer: {
@@ -109,8 +132,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  optionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.L,
+  },
   optionText: {
-    fontFamily: typography.INTER_900,
+    fontFamily: typography.ROBOTO_400,
+    fontSize: 18,
+    letterSpacing: 2,
   },
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SideMenu from '../features/app/screens/SideMenu';
 import TabNavigator from './TabNavigator';
+import TempScreen from '../features/app/screens/TempScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +13,7 @@ const StackNavigator = () => {
         component={TabNavigator}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Settings" component={SideMenu} />
+      <Stack.Screen name="Settings" component={TempScreen} />
     </Stack.Navigator>
   );
 };

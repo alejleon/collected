@@ -7,6 +7,7 @@ import StackNavigator from './navigation/StackNavigator';
 import LoadingScreen from './features/app/components/LoadingScreen';
 import { useBoundStore } from './store';
 import { globalStyles } from './styles';
+import LinkProcessing from './features/app/components/LinkProcessing';
 
 const { palette } = globalStyles;
 
@@ -15,15 +16,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={[styles.container]}>
+      <SafeAreaView style={styles.container}>
         <StatusBar
           style={isDarkTheme ? 'light' : 'dark'}
           animated={true}
           translucent={true}
-          backgroundColor={isDarkTheme ? palette.GREY_800 : palette.OFF_WHITE}
+          backgroundColor={isDarkTheme ? palette.GREY_900 : palette.OFF_WHITE}
         />
         <LoadingScreen />
         <StackNavigator />
+        <LinkProcessing />
       </SafeAreaView>
     </NavigationContainer>
   );

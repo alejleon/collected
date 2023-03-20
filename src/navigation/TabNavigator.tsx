@@ -1,25 +1,62 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../features/app/screens/Home';
-import Settings from '../features/app/screens/Settings';
+import Collection from '../features/app/screens/Collection';
+import Tools from '../features/app/screens/Tools';
+import useTheme from '../hooks/useTheme';
+import { useBoundStore } from '../store';
+import { Shadow } from 'react-native-shadow-2';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  const { colors } = useTheme();
+  const { isDarkTheme } = useBoundStore((state) => state);
+
   return (
-    <Tab.Navigator initialRouteName="Home" sceneContainerStyle={{}}>
+    <Tab.Navigator
+      initialRouteName="Collection"
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarStyle: {
+          ...styles.tabBarStyle,
+          // borderTopWidth: isDarkTheme ? 2 : 1,
+          borderTopColor: isDarkTheme ? 'transparent' : 'rgba(0,0,0,0.1)',
+          backgroundColor: colors.backgroundAlt,
+        },
+        tabBarLabelPosition: 'below-icon',
+        // tabBarBackground: () => {
+        //   return (
+        //     <Shadow
+        //       sides={{ top: true, bottom: false, start: false, end: false }}
+        //       startColor={isDarkTheme ? '#05050520' : '#E4E7EB'}
+        //       endColor={isDarkTheme ? '#17191c' : '#F5F5F5'}
+        //       distance={isDarkTheme ? 15 : 5}
+        //     />
+        //   );
+        // },
+      }}
+    >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Collection"
+        component={Collection}
         options={{
-          title: 'Home YAHH',
-          tabBarLabel: 'Home oooof',
-          headerShown: false,
+          title: 'Collection',
+          tabBarLabel: 'My Collection',
         }}
       />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Tools" component={Tools} />
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    height: 70,
+    paddingBottom: 16,
+    // borderTopColor: 'transparent',
+  },
+});
 
 export default TabNavigator;

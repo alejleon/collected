@@ -10,16 +10,16 @@ export const globalStyles = {
 
 export const lightTheme = {
   colors: {
-    background: palette.OFF_WHITE,
-    banner: palette.GREY_200,
-    card: palette.GREY_200,
     primaryText: palette.GREY_900,
     secondaryText: palette.GREY_600,
-    divider: 'red',
+    primary: palette.RED_ORANGE,
+    secondary: palette.BLUE,
+    background: palette.OFF_WHITE,
+    backgroundAlt: palette.OFF_WHITE,
+    banner: palette.OFF_WHITE,
+    card: palette.WHITE,
     // secondary: palette.GREY_300,
-    // surface: '#FFFFFF',
     // error: '#B00020',
-    // text: '#000000',
     // onBackground: '#000000',
     // onSurface: '#000000',
     // disabled: 'rgba(0, 0, 0, 0.26)',
@@ -35,8 +35,14 @@ export const lightTheme = {
       letterSpacing: 0.15,
     },
     body: {
-      fontFamily: 'PressStart2P_400Regular',
+      fontFamily: typography.ROBOTO_400,
       fontSize: 16,
+    },
+    button: {
+      fontFamily: typography.ROBOTO_500,
+      fontSize: 14,
+      lineHeight: 16,
+      letterSpacing: 1.25,
     },
   },
   spacing: spacing,
@@ -45,11 +51,14 @@ export const lightTheme = {
 export const darkTheme = {
   ...lightTheme,
   colors: {
-    background: palette.GREY_900,
-    banner: palette.GREY_800,
-    card: palette.GREY_800,
     primaryText: palette.OFF_WHITE,
     secondaryText: palette.GREY_700,
-    divider: 'red',
+    primary: palette.RED_ORANGE_DARK,
+    secondary: palette.BLUE,
+    background: palette.GREY_900,
+    // backgroundAlt: '#0D0D0D',
+    backgroundAlt: palette.BLACK,
+    banner: palette.GREY_800,
+    card: palette.GREY_800,
   },
 };

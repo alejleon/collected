@@ -1,5 +1,6 @@
 const spacing: Spacing = {
   STANDARD_EDGE: 16,
+  STANDARD_EDGE_PCNT: '90%',
   XXS: 2,
   XS: 4,
   S: 8,
@@ -12,6 +13,7 @@ const spacing: Spacing = {
 
 type Spacing = {
   STANDARD_EDGE: number;
+  STANDARD_EDGE_PCNT: string;
   XXS: number;
   XS: number;
   S: number;
