@@ -11,7 +11,13 @@ const { spacing, typography, palette } = globalStyles;
 
 const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
   const { colors } = useTheme();
-  const { isDarkTheme, toggleAppTheme } = useBoundStore((state) => state);
+  const {
+    isDarkTheme,
+    toggleAppTheme,
+    setOauthAccessToken,
+    setOauthAccessTokenSecret,
+    setOauthVerifier,
+  } = useBoundStore((state) => state);
 
   return (
     <Modal
@@ -68,6 +74,19 @@ const SideMenuModal = ({ isVisible, setModalIsActive }: SideMenuModalProps) => {
           >
             <Text style={{ ...styles.optionText, color: colors.primaryText }}>
               Reload Javascript
+            </Text>
+          </Pressable>
+          <Pressable
+            style={styles.optionContainer}
+            onPress={() => {
+              setOauthAccessToken('');
+              setOauthAccessTokenSecret('');
+              setOauthVerifier('');
+              setModalIsActive(false);
+            }}
+          >
+            <Text style={{ ...styles.optionText, color: colors.primaryText }}>
+              Clear Async Storage
             </Text>
           </Pressable>
         </View>

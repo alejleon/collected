@@ -14,11 +14,13 @@ const { spacing, palette } = globalStyles;
 const DiscogsAuth = () => {
   const { colors, textVariants } = useTheme();
   const {
-    oauthToken,
-    oauthTokenSecret,
+    oauthRequestToken,
+    oauthRequestTokenSecret,
+    oauthAccessToken,
+    oauthAccessTokenSecret,
     oauthVerifier,
-    setOauthToken,
-    setOauthTokenSecret,
+    setOauthRequestToken,
+    setOauthRequestTokenSecret,
     setOauthAccessToken,
     setOauthAccessTokenSecret,
   } = useBoundStore((state) => state);
@@ -27,41 +29,50 @@ const DiscogsAuth = () => {
     tokenEndpoint: oauthConfig.accessTokenUrl,
   };
 
-  useEffect(() => {
-    const extractTokenData = async () => {
-      try {
-        const requestData = await getRequestToken();
-        if (requestData) {
-          setOauthToken(requestData.oauthToken);
-          setOauthTokenSecret(requestData.oauthTokenSecret);
-        }
-      } catch (e) {
-        console.log('There was an error fetching request token', e);
-      }
-    };
-
-    void extractTokenData();
-  }, []);
-
   const [, , promptAsync] = AuthSession.useAuthRequest(
     {
       clientId: oauthConfig.consumerKey,
       scopes: ['identity'],
       redirectUri: oauthConfig.redirectUrl,
       extraParams: {
-        oauth_token: oauthToken,
+        oauth_token: oauthRequestToken,
       },
     },
     discovery
   );
 
   useEffect(() => {
-    if (oauthVerifier) {
+    if (!oauthRequestToken) {
+      const extractTokenData = async () => {
+        try {
+          const requestData = await getRequestToken();
+          if (requestData) {
+            setOauthRequestToken(requestData.oauthToken);
+            setOauthRequestTokenSecret(requestData.oauthTokenSecret);
+          }
+        } catch (e) {
+          console.log('There was an error fetching request token', e);
+        }
+      };
+
+      void extractTokenData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (
+      oauthVerifier &&
+      oauthRequestToken &&
+      oauthRequestTokenSecret &&
+      !oauthAccessToken &&
+      !oauthAccessTokenSecret
+    ) {
       const extractAccessTokenData = async () => {
         try {
           const tokenData = await getAccessToken({
-            oauthToken,
-            oauthTokenSecret,
+            oauthToken: oauthRequestToken,
+            oauthTokenSecret: oauthRequestTokenSecret,
             oauthVerifier,
           });
 
@@ -76,9 +87,14 @@ const DiscogsAuth = () => {
 
       void extractAccessTokenData();
     }
-  }, [oauthVerifier]);
-
-  // console.log('REQUEST', request, '\n', 'RESPONSE', response);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    oauthVerifier,
+    oauthRequestToken,
+    oauthRequestTokenSecret,
+    oauthAccessToken,
+    oauthAccessTokenSecret,
+  ]);
 
   console.log('VERIFIER', oauthVerifier);
 

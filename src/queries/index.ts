@@ -1,40 +1,27 @@
-import { AccessTokenData } from '../features/discogsAuth/types/discogsAuthTypes';
+import { OauthTokenData } from '../features/discogsAuth/types/discogsAuthTypes';
 import qs from 'query-string';
-import { getAccessTokenHeaders } from '../features/discogsAuth/utils';
-import oauthConfig from '../features/discogsAuth/oauthConfig';
+import { getAppHeaders } from '../features/discogsAuth/utils';
 
 export const getIdentity = async ({
-  oauthAccessToken,
-  oauthAccessTokenSecret,
+  oauthToken: oauthAccessToken,
+  oauthTokenSecret: oauthAccessTokenSecret,
   oauthVerifier,
-}: AccessTokenData) => {
+}: OauthTokenData) => {
   try {
-    const requestHeaders = getAccessTokenHeaders({
+    const headers = getAppHeaders({
       oauthToken: oauthAccessToken,
       oauthTokenSecret: oauthAccessTokenSecret,
       oauthVerifier: oauthVerifier,
     });
 
-    console.log('oauthRToken:', oauthAccessToken);
-
-    console.log('HEADERS', requestHeaders, '\n \n');
-
     const response = await fetch('https://api.discogs.com/oauth/identity', {
       method: 'GET',
-      // headers: headers,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Accept: 'application/json',
-        Authorization: requestHeaders,
-        'User-Agent': 'CollectedApp/1.0',
-      },
+      headers: headers,
     });
 
     const text = await response.text();
-    console.log('RAW RESPONSE', JSON.parse(text));
-
     const params = qs.parse(text);
-    console.log('IDENTITY RESPONSE', params);
+    // console.log('IDENTITY RESPONSE', params);
 
     return {
       username: params.username as string,

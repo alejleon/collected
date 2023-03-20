@@ -8,15 +8,16 @@ const createDiscogsAuthSlice: StateCreator<
   DiscogsAuthState
 > = (set, get) => ({
   userIsAuthenticated: false,
-  oauthToken: '',
-  oauthTokenSecret: '',
+  oauthRequestToken: '',
+  oauthRequestTokenSecret: '',
   oauthVerifier: '',
   oauthAccessToken: '',
   oauthAccessTokenSecret: '',
   toggleUserIsAuthenticated: () =>
     set({ userIsAuthenticated: !get().userIsAuthenticated }),
-  setOauthToken: (token: string) => set({ oauthToken: token }),
-  setOauthTokenSecret: (secret: string) => set({ oauthTokenSecret: secret }),
+  setOauthRequestToken: (token: string) => set({ oauthRequestToken: token }),
+  setOauthRequestTokenSecret: (secret: string) =>
+    set({ oauthRequestTokenSecret: secret }),
   setOauthVerifier: (verifier: string) => set({ oauthVerifier: verifier }),
   setOauthAccessToken: (token: string) => set({ oauthAccessToken: token }),
   setOauthAccessTokenSecret: (secret: string) =>

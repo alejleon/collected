@@ -20,6 +20,7 @@ export const useBoundStore = create<AppState & DiscogsAuthState>()(
         userIsAuthenticated: state.userIsAuthenticated,
         oauthAccessToken: state.oauthAccessToken,
         oauthAccessTokenSecret: state.oauthAccessTokenSecret,
+        oauthVerifier: state.oauthVerifier,
       }),
       onRehydrateStorage: () => {
         return (state, error) => {

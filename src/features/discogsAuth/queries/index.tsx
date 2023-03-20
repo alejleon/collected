@@ -1,11 +1,10 @@
 import { getAppHeaders } from '../utils';
 import qs from 'query-string';
-import { AccessHeadersData } from '../types/discogsAuthTypes';
+import { OauthTokenData } from '../types/discogsAuthTypes';
 
 export const getRequestToken = async () => {
   try {
     const requestHeaders = getAppHeaders();
-
     const response = await fetch(
       'https://api.discogs.com/oauth/request_token',
       {
@@ -26,10 +25,9 @@ export const getRequestToken = async () => {
   }
 };
 
-export const getAccessToken = async (accessHeadersData: AccessHeadersData) => {
+export const getAccessToken = async (accessHeadersData: OauthTokenData) => {
   try {
-    const requestHeaders = getAppHeaders(accessHeadersData); // need to pass in oauthObject in here
-
+    const requestHeaders = getAppHeaders(accessHeadersData);
     const response = await fetch('https://api.discogs.com/oauth/access_token', {
       method: 'POST',
       headers: requestHeaders,

@@ -20,17 +20,7 @@ const Home = () => {
     toggleUserIsAuthenticated,
   } = useBoundStore((state) => state);
 
-  // console.log(
-  //   'isDarkTheme',
-  //   isDarkTheme,
-  //   'userAunthticated???',
-  //   userIsAuthenticated
-  // );
   const { colors, textVariants } = useTheme();
-
-  // useEffect(() => {
-  //   console.log('ACCESS TOKENS', oauthAccessToken, oauthAccessTokenSecret);
-  // }, [oauthAccessToken, oauthAccessTokenSecret]);
 
   return (
     <View style={{ ...styles.container, backgroundColor: colors.background }}>
@@ -42,9 +32,9 @@ const Home = () => {
       <Button
         title="IDENTITY"
         onPress={() =>
-          getIdentity({
-            oauthAccessToken,
-            oauthAccessTokenSecret,
+          void getIdentity({
+            oauthToken: oauthAccessToken,
+            oauthTokenSecret: oauthAccessTokenSecret,
             oauthVerifier,
           })
         }
